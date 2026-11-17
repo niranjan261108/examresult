@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Portions Note</title>
+<style>
+  :root{
+    --navy:#8C2F2F;--navy-dark:#4E1919;--gold:#C1502E;
+    --bg:#F7EDE9;--card:#FFFBF9;--line:#E8D3CE;
+    --text:#3A1F1F;--text-soft:#7A5A54;
+    --owner:#A13B3B;--owner-light:#F3DCDC;--owner-border:#D9A0A0;
+    --seating:#2E7D4F;--seating-light:#DCEEE3;--seating-border:#A9D3BB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
+
+  /* ── Portal switcher ── */
+  .portal-bar{
+    display:flex;align-items:center;gap:0;
+    background:var(--navy-dark);padding:10px 20px;
+  }
+  .portal-bar span{color:#D9A6A0;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-right:12px;}
+  .portal-tab{
+    padding:7px 18px;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;
+    background:transparent;color:#E3C0BA;
+  }
+  .portal-tab.active-teacher{background:var(--navy);color:#fff;}
+  .portal-tab.active-owner{background:var(--owner);color:#fff;}
+  .portal-tab.active-timetable{background:var(--gold);color:#fff;}
+  .portal-tab.active-staff{background:var(--navy-dark);color:#fff;}
+  .portal-tab.active-seating{background:var(--seating);color:#fff;}
+  .portal-tab.tab-disabled{opacity:.45;cursor:not-allowed;}
+
+  /* ── Layout ── */
+  .app{display:flex;min-height:calc(100vh - 44px);}
+  .sidebar{width:230px;background:var(--navy-dark);color:#fff;padding:20px 0;flex-shrink:0;}
+  .sidebar-brand{display:flex;align-items:center;gap:10px;padding:0 20px 14px;}
+  .brand-logo{width:38px;height:38px;object-fit:contain;flex-shrink:0;}
+  .sidebar h1{font-size:15px;font-weight:700;margin:0 0 4px;font-family:Georgia,'Times New Roman',serif;}
+  .sidebar .sub{font-size:11px;color:#E3C0BA;margin:0;}
+  .group-label{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#D9A6A0;padding:10px 20px 6px;}
+  .class-btn{
+    display:block;width:100%;text-align:left;padding:9px 20px;
+    background:none;border:none;border-left:3px solid transparent;
+    color:#EED3CE;font-size:13.5px;cursor:pointer;
+  }
+  .class-btn:hover{background:rgba(255,255,255,0.06);}
+  .class-btn.active{background:rgba(255,255,255,0.1);border-left:3px solid var(--gold);color:#fff;font-weight:600;}
+
+  /* ── Main ── */
+  .main{flex:1;padding:28px 40px;max-width:820px;}
+  .main.main-wide{max-width:1180px;}
+  .top-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px;}
+  .top-row h2{font-size:22px;color:var(--navy-dark);font-family:Georgia,'Times New Roman',serif;}
+  .toggle{display:flex;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+  .toggle button{padding:9px 18px;border:none;background:none;font-size:13.5px;font-weight:600;color:var(--text-soft);cursor:pointer;}
+  .toggle button.active{background:var(--navy);color:#fff;}
+  .class-teacher-line{font-size:12.5px;color:var(--text-soft);margin:-10px 0 16px;}
+  .class-teacher-line strong{color:var(--navy-dark);}
+  .period-row{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .period-row label{font-size:13px;color:var(--text-soft);font-weight:600;white-space:nowrap;}
+  .period-row input{flex:1;max-width:260px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;}
+
+  /* ── Teacher table ── */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  table{width:100%;border-collapse:collapse;}
+  thead th{background:var(--navy);color:#fff;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;padding:12px 16px;text-align:left;}
+  tbody td{padding:8px 16px;border-top:1px solid var(--line);font-size:14px;}
+  tbody tr:first-child td{border-top:none;}
+  .subject-cell{font-weight:600;color:var(--navy-dark);width:60%;display:flex;align-items:center;gap:6px;}
+  .subject-cell input[type=text]{
+    padding:18px 14px;border:1px solid var(--line);border-radius:6px;font-size:16px;font-weight:600;
+    color:var(--navy-dark);background:#FCFBF8;flex:1;min-width:0;width:100%;min-height:24px;
+  }
+  .subject-cell input[type=text]:focus{outline:none;border-color:var(--navy);background:#fff;}
+  .date-cell{width:190px;}
+  .date-cell input[type=date]{
+    width:100%;padding:15px 10px;border:1px solid var(--line);border-radius:6px;font-size:14.5px;background:#FCFBF8;color:var(--text);
+  }
+  .date-cell input[type=date]:focus{outline:none;border-color:var(--navy);background:#fff;}
+  .position-cell textarea{
+    width:100%;min-height:66px;padding:14px 14px;border:1px solid var(--line);border-radius:6px;
+    font-size:15px;background:#FCFBF8;font-family:inherit;line-height:1.4;resize:vertical;
+  }
+  .position-cell textarea:focus{outline:none;border-color:var(--navy);background:#fff;}
+
+  /* ── Owner portal ── */
+  .owner-header{
+    background:var(--owner-light);border:1px solid var(--owner-border);
+    border-radius:10px;padding:14px 18px;margin-bottom:20px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .owner-header .icon{font-size:20px;}
+  .owner-header p{font-size:13px;color:var(--owner);font-weight:600;}
+  .owner-header span{font-size:12px;color:#7A2626;font-weight:400;}
+
+  .owner-card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:20px;}
+  .owner-card-head{
+    background:var(--owner);color:#fff;padding:11px 16px;
+    font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  }
+  .owner-row{display:flex;align-items:center;padding:12px 16px;border-top:1px solid var(--line);gap:12px;flex-wrap:wrap;}
+  .owner-row:first-of-type{border-top:none;}
+  .owner-row .subj-name{font-weight:600;color:var(--navy-dark);font-size:14px;width:160px;flex-shrink:0;}
+
+
+  /* ── Update banner ── */
+  #update-banner{
+    position:fixed;bottom:0;left:0;right:0;z-index:9999;
+    background:var(--navy-dark);color:#fff;padding:12px 20px;
+    display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+    font-size:13.5px;box-shadow:0 -2px 10px rgba(0,0,0,.15);
+  }
+  #update-banner button{
+    padding:7px 16px;border:none;border-radius:6px;background:var(--gold);color:#fff;
+    font-size:13px;font-weight:700;cursor:pointer;
+  }
+  #update-banner button:hover{opacity:.9;}
+  .owner-row .owner-subj-input{
+    padding:16px 14px;border:1px solid var(--line);border-radius:6px;
+    background:#FCFBF8;font-weight:600;color:var(--navy-dark);min-height:22px;font-size:14.5px;
+  }
+  .owner-row .owner-subj-input:focus{outline:none;border-color:var(--owner);background:#fff;}
+  .owner-row input[type=date]{
+    padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;background:#FCFBF8;
+    color:var(--text);
+  }
+  .owner-row input[type=date]:focus{outline:none;border-color:var(--owner);background:#fff;}
+  .owner-row .date-type{font-size:12px;color:var(--text-soft);font-weight:600;width:70px;flex-shrink:0;}
+  .owner-row .portions-input{
+    flex:1;min-width:180px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;
+    font-size:13.5px;background:#FCFBF8;font-family:inherit;line-height:1.4;resize:vertical;min-height:38px;
+  }
+  .owner-row .portions-input:focus{outline:none;border-color:var(--owner);background:#fff;}
+
+  .settings-row,.label-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+  .settings-row label,.label-row label{font-size:13px;color:var(--text-soft);font-weight:600;white-space:nowrap;}
+  .settings-row input,.label-row input{
+    flex:1;min-width:220px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;
+  }
+
+  /* ── Actions ── */
+  .add-subject-row{display:flex;align-items:center;gap:10px;margin-top:14px;}
+  .add-subject-row input{flex:1;max-width:260px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;background:var(--card);}
+  .add-subject-btn{padding:8px 16px;border:1px dashed var(--navy);border-radius:6px;background:none;color:var(--navy);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;}
+  .add-subject-btn:hover{background:var(--navy);color:#fff;border-style:solid;}
+  .remove-subject-btn{background:none;border:none;color:var(--owner);font-size:15px;font-weight:700;cursor:pointer;margin-left:8px;line-height:1;padding:0 2px;}
+  .remove-subject-btn:hover{color:#7A2626;}
+  .actions{display:flex;align-items:center;gap:12px;margin-top:16px;}
+  .save-btn{
+    color:#fff;border:none;padding:10px 22px;border-radius:7px;
+    font-size:13.5px;font-weight:600;cursor:pointer;
+  }
+  .save-btn.teacher-btn{background:var(--navy);}
+  .save-btn.teacher-btn:hover{background:var(--navy-dark);}
+  .save-btn.owner-btn{background:var(--owner);}
+  .save-btn.owner-btn:hover{background:#6E2222;}
+  .status{font-size:12.5px;color:#3F8F5F;opacity:0;transition:opacity .3s;}
+  .status.show{opacity:1;}
+
+  /* ── Panels ── */
+  #teacher-view,#owner-view,#timetable-view,#staff-view,#seating-view{display:none;}
+  #teacher-view.visible,#owner-view.visible,#timetable-view.visible,#staff-view.visible,#seating-view.visible{display:block;}
+
+  /* ── Seating portal ── */
+  .seating-header{
+    background:var(--seating-light);border:1px solid var(--seating-border);
+    border-radius:10px;padding:14px 18px;margin-bottom:20px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .seating-header .icon{font-size:20px;}
+  .seating-header p{font-size:13px;color:var(--seating);font-weight:600;}
+  .seating-header span{font-size:12px;color:#1F5A38;font-weight:400;}
+  .save-btn.seating-btn{background:var(--seating);}
+  .save-btn.seating-btn:hover{background:#215F3D;}
+  .room-row{
+    display:flex;align-items:center;gap:14px;padding:12px 16px;border-top:1px solid var(--line);flex-wrap:wrap;
+  }
+  .room-row:first-of-type{border-top:none;}
+  .room-row.disabled{opacity:.5;}
+  .room-check-label{
+    display:flex;align-items:center;gap:9px;font-weight:600;color:var(--navy-dark);font-size:14px;
+    width:230px;flex-shrink:0;cursor:pointer;
+  }
+  .room-check-label input[type=checkbox]{width:17px;height:17px;accent-color:var(--seating);cursor:pointer;}
+  .room-cap-label{font-size:12px;color:var(--text-soft);font-weight:600;white-space:nowrap;}
+  .room-row input[type=number]{
+    width:90px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;background:#FCFBF8;
+  }
+  .room-row input[type=number]:focus{outline:none;border-color:var(--seating);background:#fff;}
+  .seat-warning{font-size:12.5px;color:#B3261E;margin-top:6px;}
+  .seat-note{font-size:12px;color:var(--text-soft);margin-top:4px;}
+  .seat-sheet-table{width:100%;border-collapse:separate;border-spacing:0;min-width:700px;}
+  .seat-sheet-table th,.seat-sheet-table td{border:1px solid var(--line);padding:18px 16px;vertical-align:top;font-size:13px;}
+  .seat-sheet-table thead th{background:var(--seating);color:#fff;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;padding:16px;white-space:nowrap;}
+  .seat-sheet-table td input[type=date]{width:140px;padding:9px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;}
+  .seat-allrolls-input{width:100%;min-height:84px;padding:12px;border:1px solid var(--line);border-radius:6px;font-size:13px;font-family:inherit;line-height:1.6;resize:vertical;background:#FCFBF8;min-width:190px;}
+  .seat-allrolls-input:focus{outline:none;border-color:var(--seating);background:#fff;}
+  .seat-count{font-size:12px;color:var(--seating);font-weight:700;margin:10px 0;}
+  .seat-teacher-input{width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:13px;background:#FCFBF8;margin-top:6px;}
+  .seat-teacher-input:focus{outline:none;border-color:var(--seating);background:#fff;}
+  .seat-del-btn{background:none;border:none;color:#B3261E;font-size:18px;font-weight:700;cursor:pointer;padding:6px 10px;}
+  .seat-room-toggle{display:inline-flex;align-items:center;gap:9px;font-weight:600;color:var(--navy-dark);font-size:14px;margin-right:28px;margin-bottom:6px;cursor:pointer;}
+  .seat-room-toggle input{width:17px;height:17px;accent-color:var(--seating);cursor:pointer;}
+
+  /* ── Timetable portal ── */
+  .tt-sheet{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;margin-bottom:16px;overflow-x:auto;}
+  .tt-table{width:100%;border-collapse:collapse;background:#fff;table-layout:fixed;}
+  .tt-table th,.tt-table td{border:1px solid #333;padding:9px 14px;font-size:13.5px;text-align:center;white-space:nowrap;}
+  .tt-table thead th{background:#fff;color:var(--navy-dark);}
+  .tt-table thead tr:nth-child(1) th{
+    font-size:17px;font-weight:700;text-transform:none;letter-spacing:normal;padding:12px 14px 4px;
+    font-family:Georgia,'Times New Roman',serif;
+  }
+  .tt-table thead tr:nth-child(2) th{
+    font-size:14px;font-weight:600;color:var(--text-soft);text-transform:none;letter-spacing:normal;padding:2px 14px;
+  }
+  .tt-table thead tr:nth-child(3) th{
+    font-size:15px;font-weight:700;text-transform:none;letter-spacing:normal;padding:4px 14px 12px;
+  }
+  .tt-table thead tr:last-child th{
+    background:var(--navy);color:#fff;font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:12.5px;
+  }
+  .tt-table td:nth-child(3){font-weight:600;color:var(--navy-dark);}
+  .tt-table td:nth-child(4){text-align:left;white-space:normal;word-wrap:break-word;}
+  .tt-empty{padding:24px;color:var(--text-soft);}
+  .tt-table input[type=date],.tt-table input[type=text]{
+    width:100%;min-width:90px;padding:6px 8px;border:1px solid var(--line);border-radius:5px;font-size:13px;background:#FCFBF8;
+  }
+  .tt-table td:nth-child(3) input[type=text]{min-width:110px;}
+  .tt-table td:nth-child(4) input[type=text]{min-width:200px;}
+  .tt-table input:focus{outline:none;border-color:var(--gold);background:#fff;}
+
+  @media print{
+    .portal-bar,.sidebar,.top-row,.actions,.modal-backdrop{display:none!important;}
+    .app{display:block;}
+    .main{padding:0;max-width:100%;}
+    body{background:#fff;}
+  }
+
+  /* ── Password modal ── */
+  .modal-backdrop{
+    display:none;position:fixed;inset:0;background:rgba(22,58,89,0.55);
+    align-items:center;justify-content:center;z-index:100;padding:20px;
+  }
+  .modal-backdrop.show{display:flex;}
+  .modal-box{
+    background:var(--card);border-radius:12px;padding:26px 26px 22px;
+    width:100%;max-width:320px;box-shadow:0 12px 40px rgba(0,0,0,0.25);
+  }
+  .modal-box h3{font-size:16px;color:var(--navy-dark);margin-bottom:6px;}
+  .modal-box p{font-size:12.5px;color:var(--text-soft);margin-bottom:14px;}
+  .modal-box input{
+    width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:7px;
+    font-size:14px;margin-bottom:8px;
+  }
+  .modal-box input:focus{outline:none;border-color:var(--owner);}
+  .modal-error{font-size:12px;color:#B3261E;min-height:16px;margin-bottom:8px;}
+  .modal-actions{display:flex;gap:10px;justify-content:flex-end;}
+  .modal-actions button{
+    padding:8px 16px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:none;
+  }
+  .modal-cancel{background:none;color:var(--text-soft);}
+  .modal-confirm{background:var(--owner);color:#fff;}
+  .modal-confirm:hover{background:#6E2222;}
+
+  @media(max-width:720px){
+    .app{flex-direction:column;}
+    .sidebar{width:100%;padding:14px 0;}
+    .class-btn{display:inline-block;width:auto;}
+    .main{padding:20px;}
+    .owner-row{flex-direction:column;align-items:flex-start;}
+    .owner-row .subj-name{width:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Portal switcher -->
+<div class="portal-bar">
+  <span>Portal</span>
+  <button class="portal-tab active-teacher" id="tab-teacher" onclick="switchPortal('teacher')">Teacher</button>
+  <button class="portal-tab" id="tab-owner" onclick="switchPortal('owner')">Owner</button>
+  <button class="portal-tab" id="tab-timetable" onclick="switchPortal('timetable')">Timetable</button>
+  <button class="portal-tab" id="tab-staff" onclick="switchPortal('staff')">Staff Login</button>
+  <button class="portal-tab" id="tab-seating" onclick="switchPortal('seating')">Seating</button>
+</div>
+
+<div class="app">
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <img src="data:image/png;base64,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" alt="VTC logo" class="brand-logo">
+      <div>
+        <h1>Test Portions Note</h1>
+        <p class="sub">Weekly &amp; monthly subject portions</p>
+      </div>
+    </div>
+    <div class="group-label">State board</div>
+    <div id="sb-list"></div>
+    <div class="group-label">CBSE</div>
+    <div id="cbse-list"></div>
+  </nav>
+
+  <main class="main">
+
+    <!-- ═══ TEACHER VIEW ═══ -->
+    <div id="teacher-view" class="visible">
+      <div class="top-row">
+        <h2 id="class-title">SB VI B1</h2>
+        <div class="toggle">
+          <button id="btn-weekly" class="active" onclick="setType('weekly')">Weekly test</button>
+          <button id="btn-monthly" onclick="setType('monthly')">Monthly test</button>
+        </div>
+      </div>
+      <div class="class-teacher-line" id="class-teacher-info"></div>
+      <div class="class-teacher-line" id="teacher-approval-info"></div>
+      <div class="period-row">
+        <label id="period-label">Week</label>
+        <input type="text" id="period-input" placeholder="e.g. Week of 3 Aug">
+      </div>
+      <div class="card">
+        <table>
+          <thead><tr><th>Subject</th><th>Test date</th><th>Portions</th></tr></thead>
+          <tbody id="subject-rows"></tbody>
+        </table>
+      </div>
+      <div class="add-subject-row" id="add-subject-row" style="display:none;">
+        <input type="text" id="new-subject-input" placeholder="e.g. Computer Science" onkeydown="if(event.key==='Enter'){event.preventDefault();addCustomSubject();}">
+        <button class="add-subject-btn" onclick="addCustomSubject()">+ Add New Subject</button>
+      </div>
+      <div class="actions">
+        <button class="save-btn teacher-btn" onclick="saveTeacher()">Save</button>
+        <span class="status" id="t-status">Saved</span>
+      </div>
+    </div>
+
+    <!-- ═══ OWNER VIEW ═══ -->
+    <div id="owner-view">
+      <div class="owner-header">
+        <span class="icon">🔑</span>
+        <div>
+          <p>Owner portal — set test dates</p>
+          <span>Dates you set here will appear in the Teacher view for each subject.</span>
+        </div>
+      </div>
+
+      <div class="top-row">
+        <h2 id="owner-class-title">SB VI B1</h2>
+        <div class="toggle">
+          <button id="obtn-weekly" class="active" onclick="setType('weekly')">Weekly test</button>
+          <button id="obtn-monthly" onclick="setType('monthly')">Monthly test</button>
+        </div>
+      </div>
+
+      <div class="settings-row">
+        <label>Centre name</label>
+        <input type="text" id="institute-name-input" placeholder="e.g. Vishnu Tuition Centre">
+      </div>
+      <div class="label-row">
+        <label>Schedule title</label>
+        <input type="text" id="test-label-input" placeholder="e.g. Weekly test-2 Schedule(10 marks)">
+      </div>
+
+      <div id="owner-cards"></div>
+
+      <div class="actions">
+        <button class="save-btn owner-btn" onclick="saveOwner()">Save dates</button>
+        <span class="status" id="o-status">Dates saved</span>
+      </div>
+
+      <div class="owner-card" style="margin-top:20px;">
+        <div class="owner-card-head">Overall confirmation</div>
+        <div class="owner-row">
+          <div class="subj-name" style="width:auto;">Status:</div>
+          <span id="approval-status-text" style="font-weight:600;font-size:13.5px;">—</span>
+        </div>
+        <div class="actions" style="padding:12px 16px;">
+          <button class="save-btn owner-btn" id="approve-btn" onclick="toggleApproval()">Approve schedule</button>
+          <span class="status" id="approval-status-msg">Saved</span>
+        </div>
+      </div>
+
+      <div class="owner-card" style="margin-top:24px;">
+        <div class="owner-card-head">Change owner password</div>
+        <div class="owner-row" style="flex-wrap:wrap;">
+          <input type="password" id="pw-current-input" placeholder="Current password"
+                 style="flex:1;min-width:160px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;">
+          <input type="password" id="pw-new-input" placeholder="New password"
+                 style="flex:1;min-width:160px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;">
+          <button class="save-btn owner-btn" onclick="changeOwnerPassword()">Update password</button>
+        </div>
+        <div class="modal-error" id="pw-change-status" style="padding:0 16px 12px;"></div>
+      </div>
+
+      <div class="owner-card" style="margin-top:20px;">
+        <div class="owner-card-head">Teachers</div>
+        <div id="teacher-list"></div>
+        <div class="owner-row" style="flex-wrap:wrap;">
+          <input type="text" id="new-teacher-name" placeholder="Teacher name"
+                 style="flex:1;min-width:140px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;">
+          <input type="password" id="new-teacher-password" placeholder="Password"
+                 style="flex:1;min-width:140px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;">
+          <button class="save-btn owner-btn" onclick="addTeacher()">Add teacher</button>
+        </div>
+        <div class="modal-error" id="teacher-mgmt-status" style="padding:0 16px 12px;"></div>
+      </div>
+
+      <div class="owner-card" style="margin-top:20px;">
+        <div class="owner-card-head" id="class-teacher-card-head">Class Teacher — SB VI B1</div>
+        <div class="owner-row" style="flex-wrap:wrap;">
+          <div class="subj-name">Class Teacher</div>
+          <select id="class-teacher-select"
+                  style="flex:1;min-width:160px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;background:#FCFBF8;"></select>
+        </div>
+        <div class="actions" style="padding:12px 16px;">
+          <button class="save-btn owner-btn" onclick="saveClassTeacher()">Save class teacher</button>
+          <span class="status" id="class-teacher-status">Saved</span>
+        </div>
+      </div>
+
+      <div class="owner-card" style="margin-top:20px;">
+        <div class="owner-card-head" id="assign-card-head">Assign teachers — SB VI B1</div>
+        <div id="assign-rows"></div>
+        <div class="actions" style="padding:12px 16px;">
+          <button class="save-btn owner-btn" onclick="saveAssignments()">Save assignments</button>
+          <span class="status" id="assign-status">Saved</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TIMETABLE VIEW ═══ -->
+    <div id="timetable-view">
+      <div class="top-row">
+        <h2 id="tt-class-title">SB VI B1</h2>
+        <div class="toggle">
+          <button id="ttbtn-weekly" class="active" onclick="setType('weekly')">Weekly test</button>
+          <button id="ttbtn-monthly" onclick="setType('monthly')">Monthly test</button>
+        </div>
+      </div>
+      <div class="tt-sheet">
+        <table class="tt-table">
+          <colgroup>
+            <col style="width:15%">
+            <col style="width:14%">
+            <col style="width:17%">
+            <col style="width:54%">
+          </colgroup>
+          <thead>
+            <tr><th colspan="4" id="tt-institute"></th></tr>
+            <tr><th colspan="4" id="tt-label"></th></tr>
+            <tr><th colspan="4" id="tt-class"></th></tr>
+            <tr><th>Date</th><th>Day</th><th>Subject</th><th>Portions</th></tr>
+          </thead>
+          <tbody id="tt-rows"></tbody>
+        </table>
+      </div>
+      <div class="actions">
+        <button class="save-btn teacher-btn" onclick="downloadTimetableImage()">Download Image</button>
+        <button class="save-btn owner-btn" id="tt-edit-btn" onclick="toggleTtEdit()">Edit</button>
+        <span class="status" id="tt-status">Saved</span>
+      </div>
+      <div class="actions" id="tt-save-row" style="display:none;">
+        <button class="save-btn owner-btn" onclick="saveTimetableEdits()">Save changes</button>
+        <button class="save-btn" style="background:var(--text-soft);" onclick="cancelTtEdit()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- ═══ STAFF LOGIN VIEW ═══ -->
+    <div id="staff-view">
+      <div class="owner-header" id="staff-login-card">
+        <div style="width:100%;">
+          <p>Teacher login</p>
+          <span>Select your name and enter your password to see your assigned subjects.</span>
+          <div class="owner-row" style="border:none;padding:12px 0 0;flex-wrap:wrap;">
+            <select id="staff-name-select"
+                    style="flex:1;min-width:160px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;"></select>
+            <input type="password" id="staff-password-input" placeholder="Password"
+                   style="flex:1;min-width:160px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;">
+            <button class="save-btn owner-btn" onclick="staffLogin()">Login</button>
+          </div>
+          <div class="modal-error" id="staff-login-error" style="margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <div id="staff-dashboard" style="display:none;">
+        <div class="top-row">
+          <h2 id="staff-welcome">Welcome</h2>
+          <div class="toggle">
+            <button id="sbtn-weekly" class="active" onclick="setType('weekly')">Weekly test</button>
+            <button id="sbtn-monthly" onclick="setType('monthly')">Monthly test</button>
+          </div>
+        </div>
+
+        <div class="owner-card" id="staff-invigilation-card" style="margin-bottom:20px;">
+          <div class="owner-card-head" style="background:var(--seating);">🪑 Your Invigilation Duty</div>
+          <table>
+            <thead><tr><th>Date</th><th>Room</th><th>Students</th></tr></thead>
+            <tbody id="staff-invigilation-rows"></tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <table>
+            <thead><tr><th>Class</th><th>Subject</th><th>Test date</th><th>Portions</th></tr></thead>
+            <tbody id="staff-rows"></tbody>
+          </table>
+        </div>
+        <div class="actions">
+          <button class="save-btn owner-btn" onclick="saveStaffPortions()">Save</button>
+          <span class="status" id="staff-status">Saved</span>
+          <button class="save-btn" style="background:var(--text-soft);" onclick="staffLogout()">Log out</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SEATING ARRANGEMENT VIEW ═══ -->
+    <div id="seating-view">
+      <div class="seating-header" style="margin-bottom:26px;">
+        <span class="icon">🪑</span>
+        <div>
+          <p>Seating Arrangement</p>
+          <span>Add each exam date, then type in the roll numbers for every room yourself and pick the incharge teacher from your staff list.</span>
+        </div>
+      </div>
+
+      <div class="label-row" style="margin-bottom:22px;">
+        <label>Sheet title</label>
+        <input type="text" id="seat-exam-label" placeholder="e.g. Seating Arrangement — July 2026">
+      </div>
+
+      <div class="owner-card" style="margin-bottom:26px;">
+        <div class="owner-card-head">Rooms to include</div>
+        <div id="seat-room-rows" style="padding:18px 16px;"></div>
+      </div>
+
+      <div class="actions" style="margin-top:16px;margin-bottom:24px;">
+        <button class="save-btn seating-btn" onclick="addSeatingDateRow()">+ Add exam date</button>
+      </div>
+
+      <div class="card" id="seat-table-wrap" style="display:none;margin-top:16px;margin-bottom:24px;overflow-x:auto;">
+        <table class="seat-sheet-table">
+          <thead id="seat-thead"></thead>
+          <tbody id="seat-tbody"></tbody>
+        </table>
+      </div>
+      <p class="seat-note" id="seat-empty-note">No exam dates added yet — click "+ Add exam date" to start.</p>
+
+      <div class="actions" id="seat-save-row" style="margin-top:24px;">
+        <button class="save-btn teacher-btn" onclick="downloadSeatingImage()">Download Image</button>
+        <button class="save-btn seating-btn" onclick="saveSeatingConfig()">Save</button>
+        <span class="status" id="seat-status">Saved</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Owner password modal -->
+<div class="modal-backdrop" id="pw-modal">
+  <div class="modal-box">
+    <h3>Owner portal</h3>
+    <p>Enter the owner password to continue.</p>
+    <input type="password" id="pw-input" placeholder="Password" autocomplete="off" onkeydown="if(event.key==='Enter')checkPassword();">
+    <div class="modal-error" id="pw-error"></div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closePasswordModal()">Cancel</button>
+      <button class="modal-confirm" onclick="checkPassword()">Unlock</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Firebase ══ -->
+<!-- Fill in your project's config below (Firebase console → Project settings → Your apps → Web app). -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.16.0/firebase-app-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.16.0/firebase-firestore-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.16.0/firebase-auth-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCJaR3SpXdtz1dcGfC7X73-dEZziCPUo9c",
+    authDomain: "vtc-exam-position-note.firebaseapp.com",
+    projectId: "vtc-exam-position-note",
+    storageBucket: "vtc-exam-position-note.firebasestorage.app",
+    messagingSenderId: "117725758815",
+    appId: "1:117725758815:web:750bb477a249cfc0d662ea"
+  };
+  const firebaseSdkLoaded = typeof firebase !== "undefined";
+  let db=null;
+  let resolveAuthReady;
+  const authReady = new Promise(resolve => { resolveAuthReady = resolve; });
+
+  if(firebaseSdkLoaded){
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+    firebase.auth().onAuthStateChanged(user => { if(user) resolveAuthReady(); });
+    firebase.auth().signInAnonymously().catch(err => console.error("Firebase auth failed:", err));
+  }else{
+    console.error("Firebase SDK failed to load — check your network/ad-blocker, or that cdnjs.cloudflare.com is reachable.");
+  }
+</script>
+
+<script>
+const CLASSES = {
+  sb:["SB VI B1","SB VII B1","SB VIII B1","SB IX B1","SB X B1","SB XI B1","SB XII B1"],
+  cbse:["CBSE VI B1","CBSE VII B1","CBSE VIII B1","CBSE IX B1","CBSE X B1"]
+};
+const SUBJECTS_MAIN=["Tamil","English","Maths","Science","Social Science"];
+const SUBJECTS_SR=["Physics","Chemistry","Maths","Biology"];
+/* Weekly test has two Maths papers; Monthly test has only one.
+   currentType is a global set by setType(), so this list adjusts itself
+   whenever the Weekly/Monthly toggle is switched — no separate call needed. */
+function subjectsFor(cls){
+  const base=(cls.startsWith("SB XI")||cls.startsWith("SB XII"))?SUBJECTS_SR:SUBJECTS_MAIN;
+  const list=base.slice();
+  if(currentType==="weekly"){
+    const idx=list.indexOf("Maths");
+    if(idx!==-1) list.splice(idx+1,0,"Maths 2");
+  }
+  return list;
+}
+
+/* Order subjects by their exam date (earliest first) instead of the fixed
+   Tamil/English/Maths… list order. e.g. if Social Science's date is set
+   as the first exam, it now shows first everywhere — Teacher view, Owner
+   view, and the Timetable. Subjects with no date set yet are left at the
+   end, in their normal order, since there's nothing to sort them by. */
+function orderSubjectsByDate(subjects,meta){
+  const withIdx=subjects.map((s,i)=>({
+    s,i,date:(meta.subjects[s]&&meta.subjects[s].date)||""
+  }));
+  withIdx.sort((a,b)=>{
+    if(a.date&&b.date) return a.date.localeCompare(b.date);
+    if(a.date) return -1;
+    if(b.date) return 1;
+    return a.i-b.i;
+  });
+  return withIdx.map(x=>x.s);
+}
+
+/* ── Custom subjects (Teacher-added, per class) ──
+   Only these classes get the "+ Add New Subject" control. Custom
+   subjects are stored per class (shared across Weekly/Monthly) and
+   merged into the fixed curriculum list everywhere subjectsFor() is used. */
+const CUSTOM_SUBJECT_CLASSES=["SB X B1","SB XI B1","SB XII B1","CBSE X B1"];
+function customSubjectsKey(cls){return`custom-subjects:${slug(cls)}`;}
+async function getCustomSubjects(cls){
+  if(!CUSTOM_SUBJECT_CLASSES.includes(cls)) return [];
+  const saved=await getSaved(customSubjectsKey(cls));
+  return (saved&&saved.subjects)||[];
+}
+async function allSubjectsFor(cls){
+  return [...subjectsFor(cls),...(await getCustomSubjects(cls))];
+}
+
+async function addCustomSubject(){
+  const input=document.getElementById("new-subject-input");
+  const name=input.value.trim();
+  if(!name) return;
+  const key=customSubjectsKey(currentClass);
+  const saved=await getSaved(key);
+  const list=(saved&&saved.subjects)||[];
+  if(list.some(s=>s.toLowerCase()===name.toLowerCase())||subjectsFor(currentClass).some(s=>s.toLowerCase()===name.toLowerCase())){
+    input.value="";
+    input.placeholder="That subject already exists";
+    setTimeout(()=>{input.placeholder="e.g. Computer Science";},1800);
+    return;
+  }
+  list.push(name);
+  const res=await setSaved(key,{subjects:list});
+  if(res){
+    input.value="";
+    renderTeacher();
+  }
+}
+async function removeCustomSubject(subj){
+  if(!confirm(`Remove "${subj}" from ${currentClass}? Any dates/portions already saved for it are kept, just hidden.`)) return;
+  const key=customSubjectsKey(currentClass);
+  const saved=await getSaved(key);
+  const list=((saved&&saved.subjects)||[]).filter(s=>s!==subj);
+  await setSaved(key,{subjects:list});
+  renderTeacher();
+}
+
+let currentClass="SB VI B1";
+let currentType="weekly";
+let currentPortal="teacher";
+let ttEditMode=false;
+let ttMetaCache=null;
+let editingTeacherId=null;
+let loggedInTeacher=null;
+
+/* ── Owner portal access ── */
+const OWNER_PASSWORD="owner123"; // change this to whatever you'd like
+let ownerUnlocked=false;
+
+/* ── Portal switcher ── */
+function switchPortal(p){
+  if(p==="seating"&&currentType!=="monthly"){
+    alert("Seating arrangement is only available for the Monthly test. Switch to \"Monthly test\" first, then open Seating.");
+    return;
+  }
+  if(p==="owner"&&!ownerUnlocked){
+    openPasswordModal();
+    return;
+  }
+  activatePortal(p);
+}
+
+function updateSeatingTabState(){
+  const tab=document.getElementById("tab-seating");
+  const disabled=currentType!=="monthly";
+  tab.classList.toggle("tab-disabled",disabled);
+  tab.title=disabled?"Seating arrangement is only available for the Monthly test":"";
+}
+
+function activatePortal(p){
+  currentPortal=p;
+  document.getElementById("teacher-view").className=p==="teacher"?"visible":"";
+  document.getElementById("owner-view").className=p==="owner"?"visible":"";
+  document.getElementById("timetable-view").className=p==="timetable"?"visible":"";
+  document.getElementById("staff-view").className=p==="staff"?"visible":"";
+  document.getElementById("seating-view").className=p==="seating"?"visible":"";
+  document.querySelector(".main").classList.toggle("main-wide",p==="seating");
+  document.getElementById("tab-teacher").className="portal-tab"+(p==="teacher"?" active-teacher":"");
+  document.getElementById("tab-owner").className="portal-tab"+(p==="owner"?" active-owner":"");
+  document.getElementById("tab-timetable").className="portal-tab"+(p==="timetable"?" active-timetable":"");
+  document.getElementById("tab-staff").className="portal-tab"+(p==="staff"?" active-staff":"");
+  document.getElementById("tab-seating").className="portal-tab"+(p==="seating"?" active-seating":"");
+  updateSeatingTabState();
+  if(p==="teacher") renderTeacher();
+  else if(p==="owner") renderOwner();
+  else if(p==="timetable") renderTimetable();
+  else if(p==="seating") renderSeating();
+  else{
+    populateStaffNameOptions();
+    if(loggedInTeacher) renderStaffDashboard();
+  }
+}
+
+function openPasswordModal(){
+  document.getElementById("pw-input").value="";
+  document.getElementById("pw-error").textContent="";
+  document.getElementById("pw-modal").classList.add("show");
+  setTimeout(()=>document.getElementById("pw-input").focus(),50);
+}
+
+function closePasswordModal(){
+  document.getElementById("pw-modal").classList.remove("show");
+}
+
+async function getOwnerPassword(){
+  const stored=await getSaved("settings:owner-password");
+  return (stored&&stored.password)||OWNER_PASSWORD;
+}
+
+async function checkPassword(){
+  const entered=document.getElementById("pw-input").value;
+  const currentPassword=await getOwnerPassword();
+  if(entered===currentPassword){
+    ownerUnlocked=true;
+    closePasswordModal();
+    activatePortal("owner");
+  }else{
+    document.getElementById("pw-error").textContent="Incorrect password. Try again.";
+    document.getElementById("pw-input").value="";
+    document.getElementById("pw-input").focus();
+  }
+}
+
+async function changeOwnerPassword(){
+  const current=document.getElementById("pw-current-input").value;
+  const next=document.getElementById("pw-new-input").value;
+  const statusEl=document.getElementById("pw-change-status");
+  statusEl.style.color="#B3261E";
+
+  if(!next||next.length<4){
+    statusEl.textContent="New password must be at least 4 characters.";
+    return;
+  }
+  const currentPassword=await getOwnerPassword();
+  if(current!==currentPassword){
+    statusEl.textContent="Current password is incorrect.";
+    return;
+  }
+  const res=await setSaved("settings:owner-password",{password:next});
+  if(res){
+    statusEl.style.color="#2D6A4F";
+    statusEl.textContent="Password updated.";
+    document.getElementById("pw-current-input").value="";
+    document.getElementById("pw-new-input").value="";
+  }else{
+    statusEl.textContent="Could not save — try again.";
+  }
+}
+
+/* ── Sidebar ── */
+function renderSidebar(){
+  ["sb","cbse"].forEach(g=>{
+    const el=document.getElementById(g+"-list");
+    el.innerHTML="";
+    CLASSES[g].forEach(c=>{
+      const btn=document.createElement("button");
+      btn.className="class-btn"+(c===currentClass?" active":"");
+      btn.textContent=c;
+      btn.onclick=()=>{currentClass=c;onContextChange();};
+      el.appendChild(btn);
+    });
+  });
+}
+
+function onContextChange(){
+  renderSidebar();
+  ttEditMode=false;
+  if(currentPortal==="teacher") renderTeacher();
+  else if(currentPortal==="owner") renderOwner();
+  else if(currentPortal==="timetable") renderTimetable();
+}
+
+function setType(t){
+  currentType=t;
+  ttEditMode=false;
+  ["weekly","monthly"].forEach(x=>{
+    const a=x===t;
+    const tb=document.getElementById("btn-"+x);
+    const ob=document.getElementById("obtn-"+x);
+    const tt=document.getElementById("ttbtn-"+x);
+    const sb=document.getElementById("sbtn-"+x);
+    if(tb) tb.classList.toggle("active",a);
+    if(ob) ob.classList.toggle("active",a);
+    if(tt) tt.classList.toggle("active",a);
+    if(sb) sb.classList.toggle("active",a);
+  });
+  updateSeatingTabState();
+  if(currentPortal==="seating"&&t!=="monthly"){
+    // Seating is monthly-only — bounce back to the Teacher view.
+    activatePortal("teacher");
+    return;
+  }
+  if(currentPortal==="teacher") renderTeacher();
+  else if(currentPortal==="owner") renderOwner();
+  else if(currentPortal==="timetable") renderTimetable();
+  else if(currentPortal==="staff"&&loggedInTeacher) renderStaffDashboard();
+}
+
+/* ── Storage helpers ── */
+function slug(s){return s.replace(/\s+/g,"_");}
+function tKey(){return`position:${slug(currentClass)}:${currentType}`;}
+function oKey(){return`owner-dates:${slug(currentClass)}:${currentType}`;}
+function oKeyFor(cls,type){return`owner-dates:${slug(cls)}:${type}`;}
+function approvalKey(cls,type){return`approval:${slug(cls)}:${type}`;}
+
+/* Subject renames used to work by changing the STORAGE KEY that the date
+   and portions were kept under (e.g. "Tamil" -> "Tamil I"). But the subject
+   list shown on screen is always rebuilt from the fixed base list, so on
+   the next visit "Tamil I" was never looked up again — the data wasn't
+   actually deleted, it was just orphaned under a key nothing pointed to
+   anymore. Fix: the ORIGINAL subject name is now a permanent, unchanging
+   key for date/portions storage. A rename only changes a separate
+   "display label" for that same permanent key, so nothing can ever get
+   orphaned by typing a new name into the box. */
+function subjLabelsKey(cls){return`subject-labels:${slug(cls)}`;}
+async function getSubjectLabels(cls){
+  const saved=await getSaved(subjLabelsKey(cls));
+  return (saved&&saved.labels)||{};
+}
+/* subjNameMap: {origId: typedDisplayName}. Only persists entries that are
+   actually different from the permanent id, and removes any override that
+   was typed back to match the original. */
+async function saveSubjectLabelChanges(cls,subjNameMap){
+  const current=await getSubjectLabels(cls);
+  let changed=false;
+  Object.keys(subjNameMap).forEach(orig=>{
+    const typed=(subjNameMap[orig]||"").trim();
+    if(typed&&typed!==orig){
+      if(current[orig]!==typed){current[orig]=typed;changed=true;}
+    }else if(current[orig]){
+      delete current[orig];changed=true;
+    }
+  });
+  if(changed) await setSaved(subjLabelsKey(cls),{labels:current});
+  return current;
+}
+
+async function getSaved(key){
+  if(!db)return null;
+  try{
+    await authReady;
+    const doc=await db.collection("app_data").doc(key).get();
+    return doc.exists?doc.data().value:null;
+  }catch(e){console.error("Firestore read failed:",e);return null;}
+}
+
+async function setSaved(key,value){
+  if(!db)return false;
+  try{
+    await authReady;
+    await db.collection("app_data").doc(key).set({
+      value,
+      updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+    });
+    return true;
+  }catch(e){console.error("Firestore write failed:",e);return false;}
+}
+
+/* Owner data now stores {label, subjects:{subj:{date,portions}}}.
+   Older saves were a flat {subj: dateString} — read those too. */
+function normalizeOwnerData(saved){
+  if(!saved) return {label:"",subjects:{}};
+  if(saved.subjects) return {label:saved.label||"",subjects:saved.subjects};
+  const subjects={};
+  Object.keys(saved).forEach(k=>{subjects[k]={date:saved[k],portions:""};});
+  return {label:"",subjects};
+}
+
+/* ── Teacher view ── */
+async function renderTeacher(){
+  document.getElementById("class-title").textContent=currentClass;
+  document.getElementById("period-label").textContent=currentType==="weekly"?"Week":"Month";
+  document.getElementById("period-input").placeholder=currentType==="weekly"?"e.g. Week of 3 Aug":"e.g. August";
+
+  const saved=await getSaved(tKey());
+  const ownerSaved=await getSaved(oKey());
+  const meta=normalizeOwnerData(ownerSaved);
+  const baseSubjects=subjectsFor(currentClass);
+  const customSubjects=await getCustomSubjects(currentClass);
+  const subjects=orderSubjectsByDate([...baseSubjects,...customSubjects],meta);
+
+  const addRow=document.getElementById("add-subject-row");
+  addRow.style.display=CUSTOM_SUBJECT_CLASSES.includes(currentClass)?"flex":"none";
+
+  const [teachersStored,classTeachers,subjLabels]=await Promise.all([
+    getSaved("settings:teachers"),
+    getClassTeachers(),
+    getSubjectLabels(currentClass)
+  ]);
+  const teachersList=(teachersStored&&teachersStored.teachers)||[];
+  const ctId=classTeachers[slug(currentClass)]||"";
+  const ct=teachersList.find(t=>t.id===ctId);
+  const ctInfoEl=document.getElementById("class-teacher-info");
+  ctInfoEl.textContent="Class Teacher: ";
+  const ctStrong=document.createElement("strong");
+  ctStrong.textContent=ct?ct.name:"Not assigned";
+  ctInfoEl.appendChild(ctStrong);
+
+  document.getElementById("period-input").value=saved&&saved.period?saved.period:"";
+
+  const approvalSaved=await getSaved(approvalKey(currentClass,currentType));
+  const apInfo=document.getElementById("teacher-approval-info");
+  if(approvalSaved&&approvalSaved.approved){
+    apInfo.textContent=approvalSaved.approvedAt?`✅ Owner approved this schedule on ${formatDate(approvalSaved.approvedAt)}`:"✅ Owner approved this schedule";
+    apInfo.style.color="#2E7D4F";
+  }else{
+    apInfo.textContent="⏳ Not yet approved by owner";
+    apInfo.style.color="";
+  }
+
+  const tbody=document.getElementById("subject-rows");
+  tbody.innerHTML="";
+  subjects.forEach(subj=>{
+    const tr=document.createElement("tr");
+
+    // Subject name — editable, same rename pattern as the Owner portal.
+    const tdS=document.createElement("td");
+    tdS.className="subject-cell";
+    const nameInp=document.createElement("input");
+    nameInp.type="text";
+    nameInp.value=subjLabels[subj]||subj;
+    nameInp.dataset.origSubject=subj;
+    tdS.appendChild(nameInp);
+    if(customSubjects.includes(subj)){
+      const rm=document.createElement("button");
+      rm.className="remove-subject-btn";
+      rm.title="Remove this subject";
+      rm.textContent="×";
+      rm.onclick=()=>removeCustomSubject(subj);
+      tdS.appendChild(rm);
+    }
+
+    // Test date — editable here too now (previously Owner-only).
+    const ownerDate=(meta.subjects[subj]&&meta.subjects[subj].date)||"";
+    const tdD=document.createElement("td");
+    tdD.className="date-cell";
+    const dateInp=document.createElement("input");
+    dateInp.type="date";
+    dateInp.dataset.subject=subj;
+    dateInp.value=ownerDate;
+    tdD.appendChild(dateInp);
+
+    // Position/portions input — this is the SAME field the Owner portal
+    // and Timetable call "Portions". Editing it here updates it everywhere.
+    const tdP=document.createElement("td");
+    tdP.className="position-cell";
+    const inp=document.createElement("textarea");
+    inp.rows=2;inp.placeholder="e.g. Ch 1";
+    inp.dataset.subject=subj;
+    const legacyPosition=(saved&&saved.positions&&saved.positions[subj])||"";
+    const currentPortions=(meta.subjects[subj]&&meta.subjects[subj].portions)||"";
+    inp.value=currentPortions||legacyPosition;
+    tdP.appendChild(inp);
+
+    tr.appendChild(tdS);tr.appendChild(tdD);tr.appendChild(tdP);
+    tbody.appendChild(tr);
+  });
+}
+
+async function saveTeacher(){
+  const period=document.getElementById("period-input").value.trim();
+
+  // Period is teacher-only, kept under its own key.
+  await setSaved(tKey(),{period});
+
+  // Merge the entered subject names/dates/portions into the shared owner
+  // data so they show up in the Owner portal and Timetable too.
+  const ownerSaved=await getSaved(oKey());
+  const meta=normalizeOwnerData(ownerSaved);
+  const subjects={};
+  Object.keys(meta.subjects).forEach(s=>{subjects[s]={...meta.subjects[s]};});
+
+  // Build a map from the permanent subject id → the typed display name,
+  // so a rename can be saved as a label WITHOUT moving the date/portions
+  // to a new (and later unreachable) storage key.
+  const subjNameMap={};
+  document.querySelectorAll("#subject-rows .subject-cell input[type=text]").forEach(inp=>{
+    subjNameMap[inp.dataset.origSubject]=inp.value.trim();
+  });
+
+  document.querySelectorAll("#subject-rows .date-cell input[type=date]").forEach(inp=>{
+    const orig=inp.dataset.subject;
+    if(!subjects[orig]) subjects[orig]={};
+    subjects[orig].date=inp.value||"";
+  });
+
+  document.querySelectorAll("#subject-rows .position-cell textarea").forEach(inp=>{
+    const orig=inp.dataset.subject;
+    if(!subjects[orig]) subjects[orig]={};
+    subjects[orig].portions=inp.value.trim();
+  });
+
+  try{
+    const res=await setSaved(oKey(),{label:meta.label,subjects});
+    if(!res)throw new Error("no result");
+    await saveSubjectLabelChanges(currentClass,subjNameMap);
+    flash("t-status");
+  }catch(e){
+    const el=document.getElementById("t-status");
+    el.textContent="Could not save — try again";
+    el.style.color="#B3261E";
+    el.classList.add("show");
+    setTimeout(()=>{el.classList.remove("show");el.textContent="Saved";el.style.color="";},2500);
+  }
+}
+
+/* ── Owner view ── */
+async function renderOwner(){
+  document.getElementById("owner-class-title").textContent=currentClass;
+  const saved=await getSaved(oKey());
+  const meta=normalizeOwnerData(saved);
+  const subjects=orderSubjectsByDate(await allSubjectsFor(currentClass),meta);
+  const instituteSaved=await getSaved("settings:institute-name");
+  const teacherSaved=await getSaved(tKey());
+  const teacherPositions=(teacherSaved&&teacherSaved.positions)||{};
+  const subjLabels=await getSubjectLabels(currentClass);
+
+  document.getElementById("institute-name-input").value=(instituteSaved&&instituteSaved.name)||"";
+  document.getElementById("test-label-input").value=meta.label||"";
+  document.getElementById("test-label-input").placeholder=currentType==="weekly"
+    ?"e.g. Weekly test-2 Schedule(10 marks)":"e.g. Monthly Test Schedule";
+
+  const container=document.getElementById("owner-cards");
+  container.innerHTML="";
+
+  const card=document.createElement("div");
+  card.className="owner-card";
+  const head=document.createElement("div");
+  head.className="owner-card-head";
+  head.textContent=`${currentClass} — ${currentType==="weekly"?"Weekly":"Monthly"} test dates & portions`;
+  card.appendChild(head);
+
+  subjects.forEach(subj=>{
+    const entry=meta.subjects[subj]||{};
+    const row=document.createElement("div");
+    row.className="owner-row";
+
+    const nm=document.createElement("input");
+    nm.type="text";
+    nm.className="subj-name owner-subj-input";
+    nm.value=subjLabels[subj]||subj;
+    nm.dataset.origSubject=subj;
+    nm.placeholder="Subject name";
+
+    const lbl=document.createElement("div");
+    lbl.className="date-type";
+    lbl.textContent="Test date";
+
+    const inp=document.createElement("input");
+    inp.type="date";
+    inp.dataset.subject=subj;
+    inp.value=entry.date||"";
+
+    const lblP=document.createElement("div");
+    lblP.className="date-type";
+    lblP.textContent="Portions";
+
+    const inpP=document.createElement("textarea");
+    inpP.rows=2;
+    inpP.className="portions-input";
+    inpP.dataset.subject=subj;
+    inpP.placeholder=teacherPositions[subj]?`From teacher: ${teacherPositions[subj]}`:"Syllabus portion / topic";
+    inpP.value=entry.portions||"";
+
+    row.appendChild(nm);row.appendChild(lbl);row.appendChild(inp);row.appendChild(lblP);row.appendChild(inpP);
+    card.appendChild(row);
+  });
+  container.appendChild(card);
+
+  renderTeacherManagement();
+  renderAssignments();
+  renderClassTeacherSelect();
+  renderApproval();
+}
+
+/* ── Overall confirmation (Owner approval) ──
+   One approved/not-approved flag per class + test type, so the owner can
+   give (or revoke) a final sign-off on that schedule. */
+async function renderApproval(){
+  const saved=await getSaved(approvalKey(currentClass,currentType));
+  const approved=!!(saved&&saved.approved);
+  const txt=document.getElementById("approval-status-text");
+  const btn=document.getElementById("approve-btn");
+  if(!txt||!btn) return;
+  if(approved){
+    txt.textContent=saved.approvedAt?`✅ Approved on ${formatDate(saved.approvedAt)}`:"✅ Approved";
+    txt.style.color="#2E7D4F";
+    btn.textContent="Revoke approval";
+  }else{
+    txt.textContent="⏳ Not yet approved";
+    txt.style.color="var(--text-soft)";
+    btn.textContent="Approve schedule";
+  }
+}
+
+async function toggleApproval(){
+  const key=approvalKey(currentClass,currentType);
+  const saved=await getSaved(key);
+  const approved=!!(saved&&saved.approved);
+  const payload=approved
+    ?{approved:false}
+    :{approved:true,approvedAt:new Date().toISOString().slice(0,10)};
+  const statusEl=document.getElementById("approval-status-msg");
+  try{
+    const res=await setSaved(key,payload);
+    if(!res)throw new Error("save failed");
+    flash("approval-status-msg");
+    renderApproval();
+  }catch(e){
+    statusEl.textContent="Could not save — try again";
+    statusEl.style.color="#B3261E";
+    statusEl.classList.add("show");
+    setTimeout(()=>{statusEl.classList.remove("show");statusEl.textContent="Saved";statusEl.style.color="";},2500);
+  }
+}
+
+async function saveOwner(){
+  const subjects={};
+  // Build a map from the permanent subject id → typed display name. The
+  // rename is saved as a label only — it never becomes the storage key,
+  // so it can't strand the date/portions under an unreachable key.
+  const subjNameMap={};
+  document.querySelectorAll("#owner-cards .owner-subj-input").forEach(inp=>{
+    subjNameMap[inp.dataset.origSubject]=inp.value.trim();
+  });
+  document.querySelectorAll("#owner-cards input[type=date]").forEach(inp=>{
+    const orig=inp.dataset.subject;
+    if(!subjects[orig]) subjects[orig]={};
+    subjects[orig].date=inp.value||"";
+  });
+  document.querySelectorAll("#owner-cards .portions-input").forEach(inp=>{
+    const orig=inp.dataset.subject;
+    if(!subjects[orig]) subjects[orig]={};
+    subjects[orig].portions=inp.value.trim();
+  });
+  Object.keys(subjects).forEach(s=>{
+    if(!subjects[s].date&&!subjects[s].portions) delete subjects[s];
+  });
+  const label=document.getElementById("test-label-input").value.trim();
+  const instituteName=document.getElementById("institute-name-input").value.trim();
+  try{
+    const res1=await setSaved(oKey(),{label,subjects});
+    const res2=await setSaved("settings:institute-name",{name:instituteName});
+    if(!res1||!res2)throw new Error("no result");
+    await saveSubjectLabelChanges(currentClass,subjNameMap);
+    flash("o-status");
+  }catch(e){
+    const el=document.getElementById("o-status");
+    el.textContent="Could not save — try again";
+    el.style.color="#B3261E";
+    el.classList.add("show");
+    setTimeout(()=>{el.classList.remove("show");el.textContent="Dates saved";el.style.color="";},2500);
+  }
+}
+
+/* ── Teacher management (Owner portal) ── */
+async function renderTeacherManagement(){
+  const stored=await getSaved("settings:teachers");
+  const teachers=(stored&&stored.teachers)||[];
+  const list=document.getElementById("teacher-list");
+  list.innerHTML="";
+
+  if(teachers.length===0){
+    const p=document.createElement("div");
+    p.style.cssText="padding:12px 16px;color:var(--text-soft);font-size:13.5px;";
+    p.textContent="No teachers added yet.";
+    list.appendChild(p);
+    return;
+  }
+
+  teachers.forEach(t=>{
+    const row=document.createElement("div");
+    row.className="owner-row";
+    row.style.flexWrap="wrap";
+
+    if(editingTeacherId===t.id){
+      const nameInp=document.createElement("input");
+      nameInp.type="text";nameInp.value=t.name;nameInp.id="edit-name-"+t.id;
+      nameInp.style.cssText="flex:1;min-width:120px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;";
+
+      const passInp=document.createElement("input");
+      passInp.type="text";passInp.value=t.password;passInp.id="edit-pass-"+t.id;
+      passInp.placeholder="Password";
+      passInp.style.cssText="flex:1;min-width:120px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;";
+
+      const saveBtn=document.createElement("button");
+      saveBtn.className="save-btn owner-btn";saveBtn.style.cssText="padding:6px 12px;font-size:12.5px;";
+      saveBtn.textContent="Save";
+      saveBtn.onclick=()=>saveTeacherEdit(t.id);
+
+      const cancelBtn=document.createElement("button");
+      cancelBtn.className="save-btn";cancelBtn.style.cssText="padding:6px 12px;font-size:12.5px;background:var(--text-soft);";
+      cancelBtn.textContent="Cancel";
+      cancelBtn.onclick=()=>{editingTeacherId=null;renderTeacherManagement();};
+
+      row.appendChild(nameInp);row.appendChild(passInp);row.appendChild(saveBtn);row.appendChild(cancelBtn);
+    }else{
+      const nameSpan=document.createElement("div");
+      nameSpan.textContent=t.name;
+      nameSpan.style.cssText="flex:1;min-width:120px;font-weight:600;color:var(--navy-dark);font-size:14px;";
+
+      const editBtn=document.createElement("button");
+      editBtn.className="save-btn owner-btn";editBtn.style.cssText="padding:6px 12px;font-size:12.5px;";
+      editBtn.textContent="Edit";
+      editBtn.onclick=()=>{editingTeacherId=t.id;renderTeacherManagement();};
+
+      const delBtn=document.createElement("button");
+      delBtn.className="save-btn";delBtn.style.cssText="padding:6px 12px;font-size:12.5px;background:#B3261E;";
+      delBtn.textContent="Delete";
+      delBtn.dataset.confirming="false";
+      delBtn.onclick=()=>handleDeleteTeacherClick(delBtn,t.id);
+
+      row.appendChild(nameSpan);row.appendChild(editBtn);row.appendChild(delBtn);
+    }
+    list.appendChild(row);
+  });
+}
+
+function handleDeleteTeacherClick(btn,id){
+  if(btn.dataset.confirming==="true"){
+    deleteTeacher(id);
+  }else{
+    btn.dataset.confirming="true";
+    btn.textContent="Confirm?";
+    setTimeout(()=>{btn.dataset.confirming="false";btn.textContent="Delete";},3000);
+  }
+}
+
+async function addTeacher(){
+  const nameEl=document.getElementById("new-teacher-name");
+  const passEl=document.getElementById("new-teacher-password");
+  const statusEl=document.getElementById("teacher-mgmt-status");
+  const name=nameEl.value.trim();
+  const password=passEl.value.trim();
+  statusEl.style.color="#B3261E";
+
+  if(!name||!password){
+    statusEl.textContent="Enter both a name and a password.";
+    return;
+  }
+  const stored=await getSaved("settings:teachers");
+  const teachers=(stored&&stored.teachers)||[];
+  const id="t"+Date.now();
+  teachers.push({id,name,password});
+  const res=await setSaved("settings:teachers",{teachers});
+  if(res){
+    nameEl.value="";passEl.value="";
+    statusEl.style.color="#2D6A4F";
+    statusEl.textContent="Teacher added.";
+    renderTeacherManagement();
+    renderAssignments();
+    renderClassTeacherSelect();
+  }else{
+    statusEl.textContent="Could not save — try again.";
+  }
+}
+
+async function saveTeacherEdit(id){
+  const nameEl=document.getElementById("edit-name-"+id);
+  const passEl=document.getElementById("edit-pass-"+id);
+  const name=nameEl.value.trim();
+  const password=passEl.value.trim();
+  if(!name||!password)return;
+  const stored=await getSaved("settings:teachers");
+  const teachers=(stored&&stored.teachers)||[];
+  const idx=teachers.findIndex(t=>t.id===id);
+  if(idx>=0) teachers[idx]={id,name,password};
+  await setSaved("settings:teachers",{teachers});
+  editingTeacherId=null;
+  renderTeacherManagement();
+  renderAssignments();
+  renderClassTeacherSelect();
+}
+
+async function deleteTeacher(id){
+  const stored=await getSaved("settings:teachers");
+  const teachers=((stored&&stored.teachers)||[]).filter(t=>t.id!==id);
+  await setSaved("settings:teachers",{teachers});
+  renderTeacherManagement();
+  renderAssignments();
+  renderClassTeacherSelect();
+}
+
+/* ── Subject assignment (Owner portal, per class) ── */
+async function renderAssignments(){
+  document.getElementById("assign-card-head").textContent=`Assign teachers — ${currentClass}`;
+
+  const teachersStored=await getSaved("settings:teachers");
+  const teachers=(teachersStored&&teachersStored.teachers)||[];
+  const assignStored=await getSaved("settings:assignments");
+  const allAssignments=assignStored||{};
+  const classAssignments=allAssignments[slug(currentClass)]||{};
+
+  const subjects=await allSubjectsFor(currentClass);
+  const container=document.getElementById("assign-rows");
+  container.innerHTML="";
+
+  subjects.forEach(subj=>{
+    const row=document.createElement("div");
+    row.className="owner-row";
+
+    const nm=document.createElement("div");
+    nm.className="subj-name";nm.textContent=subj;
+
+    const sel=document.createElement("select");
+    sel.dataset.subject=subj;
+    sel.style.cssText="flex:1;min-width:160px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;font-size:13.5px;background:#FCFBF8;";
+
+    const noneOpt=document.createElement("option");
+    noneOpt.value="";noneOpt.textContent="— Unassigned —";
+    sel.appendChild(noneOpt);
+
+    teachers.forEach(t=>{
+      const opt=document.createElement("option");
+      opt.value=t.id;opt.textContent=t.name;
+      if(classAssignments[subj]===t.id) opt.selected=true;
+      sel.appendChild(opt);
+    });
+
+    row.appendChild(nm);row.appendChild(sel);
+    container.appendChild(row);
+  });
+}
+
+async function saveAssignments(){
+  const assignStored=await getSaved("settings:assignments");
+  const allAssignments=assignStored||{};
+  const classSlug=slug(currentClass);
+  const classAssignments={};
+  document.querySelectorAll("#assign-rows select").forEach(sel=>{
+    if(sel.value) classAssignments[sel.dataset.subject]=sel.value;
+  });
+  allAssignments[classSlug]=classAssignments;
+
+  const statusEl=document.getElementById("assign-status");
+  const res=await setSaved("settings:assignments",allAssignments);
+  if(res){
+    flash("assign-status");
+  }else{
+    statusEl.textContent="Could not save — try again";
+    statusEl.style.color="#B3261E";
+    statusEl.classList.add("show");
+    setTimeout(()=>{statusEl.classList.remove("show");statusEl.textContent="Saved";statusEl.style.color="";},2500);
+  }
+}
+
+/* ── Class Teacher (Owner portal, per class) ── */
+async function getClassTeachers(){
+  const stored=await getSaved("settings:class-teachers");
+  return stored||{};
+}
+
+async function renderClassTeacherSelect(){
+  document.getElementById("class-teacher-card-head").textContent=`Class Teacher — ${currentClass}`;
+
+  const teachersStored=await getSaved("settings:teachers");
+  const teachers=(teachersStored&&teachersStored.teachers)||[];
+  const classTeachers=await getClassTeachers();
+  const currentAssignment=classTeachers[slug(currentClass)]||"";
+
+  const sel=document.getElementById("class-teacher-select");
+  sel.innerHTML="";
+
+  const noneOpt=document.createElement("option");
+  noneOpt.value="";noneOpt.textContent="— Not assigned —";
+  sel.appendChild(noneOpt);
+
+  teachers.forEach(t=>{
+    const opt=document.createElement("option");
+    opt.value=t.id;opt.textContent=t.name;
+    if(currentAssignment===t.id) opt.selected=true;
+    sel.appendChild(opt);
+  });
+}
+
+async function saveClassTeacher(){
+  const sel=document.getElementById("class-teacher-select");
+  const classTeachers=await getClassTeachers();
+  const classSlug=slug(currentClass);
+  if(sel.value) classTeachers[classSlug]=sel.value;
+  else delete classTeachers[classSlug];
+
+  const statusEl=document.getElementById("class-teacher-status");
+  const res=await setSaved("settings:class-teachers",classTeachers);
+  if(res){
+    flash("class-teacher-status");
+  }else{
+    statusEl.textContent="Could not save — try again";
+    statusEl.style.color="#B3261E";
+    statusEl.classList.add("show");
+    setTimeout(()=>{statusEl.classList.remove("show");statusEl.textContent="Saved";statusEl.style.color="";},2500);
+  }
+}
+
+/* ── Staff Login portal ── */
+async function populateStaffNameOptions(){
+  const stored=await getSaved("settings:teachers");
+  const teachers=(stored&&stored.teachers)||[];
+  const sel=document.getElementById("staff-name-select");
+  sel.innerHTML="";
+  if(teachers.length===0){
+    const opt=document.createElement("option");
+    opt.value="";opt.textContent="No teachers added yet";
+    sel.appendChild(opt);
+    return;
+  }
+  teachers.forEach(t=>{
+    const opt=document.createElement("option");
+    opt.value=t.id;opt.textContent=t.name;
+    sel.appendChild(opt);
+  });
+}
+
+async function staffLogin(){
+  const sel=document.getElementById("staff-name-select");
+  const passEl=document.getElementById("staff-password-input");
+  const errEl=document.getElementById("staff-login-error");
+  const teacherId=sel.value;
+  const entered=passEl.value;
+
+  if(!teacherId){errEl.textContent="Select your name first.";return;}
+
+  const stored=await getSaved("settings:teachers");
+  const teachers=(stored&&stored.teachers)||[];
+  const t=teachers.find(x=>x.id===teacherId);
+  if(!t||t.password!==entered){
+    errEl.textContent="Incorrect password.";
+    passEl.value="";
+    return;
+  }
+  loggedInTeacher={id:t.id,name:t.name};
+  errEl.textContent="";
+  passEl.value="";
+  document.getElementById("staff-login-card").style.display="none";
+  document.getElementById("staff-dashboard").style.display="block";
+  document.getElementById("staff-welcome").textContent=`Welcome, ${t.name}`;
+  renderStaffDashboard();
+}
+
+function staffLogout(){
+  loggedInTeacher=null;
+  document.getElementById("staff-login-card").style.display="block";
+  document.getElementById("staff-dashboard").style.display="none";
+  document.getElementById("staff-password-input").value="";
+}
+
+async function renderStaffDashboard(){
+  if(!loggedInTeacher)return;
+  renderStaffInvigilation();
+  const assignStored=await getSaved("settings:assignments");
+  const allAssignments=assignStored||{};
+  const allClasses=[...CLASSES.sb,...CLASSES.cbse];
+
+  const tbody=document.getElementById("staff-rows");
+  tbody.innerHTML="";
+  let anyRows=false;
+
+  for(const cls of allClasses){
+    const clsSlug=slug(cls);
+    const classAssignments=allAssignments[clsSlug]||{};
+    const mySubjects=(await allSubjectsFor(cls)).filter(s=>classAssignments[s]===loggedInTeacher.id);
+    if(mySubjects.length===0)continue;
+
+    const ownerSaved=await getSaved(oKeyFor(cls,currentType));
+    const meta=normalizeOwnerData(ownerSaved);
+
+    mySubjects.forEach(subj=>{
+      anyRows=true;
+      const entry=meta.subjects[subj]||{};
+      const tr=document.createElement("tr");
+
+      const tdCls=document.createElement("td");
+      tdCls.textContent=cls;tdCls.style.cssText="font-weight:600;color:var(--navy-dark);";
+
+      const tdSubj=document.createElement("td");
+      tdSubj.textContent=subj;
+
+      const tdDate=document.createElement("td");
+      tdDate.style.cssText="font-size:13px;color:var(--text-soft);";
+      tdDate.textContent=entry.date?formatDate(entry.date):"—";
+
+      const tdPort=document.createElement("td");
+      tdPort.className="position-cell";
+      const ta=document.createElement("textarea");
+      ta.rows=2;ta.placeholder="e.g. Ch 1";
+      ta.dataset.class=clsSlug;ta.dataset.subject=subj;
+      ta.value=entry.portions||"";
+      tdPort.appendChild(ta);
+
+      tr.appendChild(tdCls);tr.appendChild(tdSubj);tr.appendChild(tdDate);tr.appendChild(tdPort);
+      tbody.appendChild(tr);
+    });
+  }
+
+  if(!anyRows){
+    const tr=document.createElement("tr");
+    const td=document.createElement("td");
+    td.colSpan=4;td.style.cssText="padding:24px;text-align:center;color:var(--text-soft);";
+    td.textContent="No subjects assigned to you yet — ask the owner to assign some.";
+    tr.appendChild(td);tbody.appendChild(tr);
+  }
+}
+
+async function saveStaffPortions(){
+  if(!loggedInTeacher)return;
+  const byClass={};
+  document.querySelectorAll("#staff-rows textarea").forEach(ta=>{
+    const cls=ta.dataset.class;
+    if(!byClass[cls])byClass[cls]={};
+    byClass[cls][ta.dataset.subject]=ta.value.trim();
+  });
+
+  const statusEl=document.getElementById("staff-status");
+  try{
+    for(const clsSlug of Object.keys(byClass)){
+      const key=`owner-dates:${clsSlug}:${currentType}`;
+      const ownerSaved=await getSaved(key);
+      const meta=normalizeOwnerData(ownerSaved);
+      const subjects={};
+      Object.keys(meta.subjects).forEach(s=>{subjects[s]={...meta.subjects[s]};});
+      Object.keys(byClass[clsSlug]).forEach(subj=>{
+        if(!subjects[subj])subjects[subj]={};
+        subjects[subj].portions=byClass[clsSlug][subj];
+      });
+      const res=await setSaved(key,{label:meta.label,subjects});
+      if(!res)throw new Error("save failed");
+    }
+    flash("staff-status");
+  }catch(e){
+    statusEl.textContent="Could not save — try again";
+    statusEl.style.color="#B3261E";
+    statusEl.classList.add("show");
+    setTimeout(()=>{statusEl.classList.remove("show");statusEl.textContent="Saved";statusEl.style.color="";},2500);
+  }
+}
+
+/* ── Timetable view ── */
+let ttTeacherPositionsCache={};
+let ttSubjectsCache=[];
+let ttLabelsCache={};
+
+async function renderTimetable(){
+  const saved=await getSaved(oKey());
+  const meta=normalizeOwnerData(saved);
+  ttMetaCache=meta;
+  const instituteSaved=await getSaved("settings:institute-name");
+  const instituteName=(instituteSaved&&instituteSaved.name)||"";
+  const teacherSaved=await getSaved(tKey());
+  ttTeacherPositionsCache=(teacherSaved&&teacherSaved.positions)||{};
+  ttSubjectsCache=await allSubjectsFor(currentClass);
+  ttLabelsCache=await getSubjectLabels(currentClass);
+
+  document.getElementById("tt-institute").textContent=instituteName||"—";
+
+  renderTimetableRows();
+}
+
+// Redraws the table from whatever is currently in ttMetaCache /
+// ttTeacherPositionsCache WITHOUT re-fetching from the database.
+// Used right after a save so the table always reflects exactly what
+// you just typed, instead of a possibly-stale re-read.
+function renderTimetableRows(){
+  document.getElementById("tt-class-title").textContent=currentClass;
+
+  const meta=ttMetaCache||{label:"",subjects:{}};
+  const teacherPositions=ttTeacherPositionsCache||{};
+
+  document.getElementById("tt-label").textContent=meta.label||
+    (currentType==="weekly"?"Weekly Test Schedule":"Monthly Test Schedule");
+  document.getElementById("tt-class").textContent=currentClass;
+
+  document.getElementById("tt-edit-btn").textContent=ttEditMode?"Editing…":"Edit";
+  document.getElementById("tt-save-row").style.display=ttEditMode?"flex":"none";
+
+  const subjects=ttSubjectsCache.length?ttSubjectsCache:subjectsFor(currentClass);
+  const rows=subjects
+    .map(subj=>{
+      const ownerEntry=meta.subjects[subj]||{};
+      const portions=ownerEntry.portions||teacherPositions[subj]||"";
+      const label=(ttLabelsCache&&ttLabelsCache[subj])||subj;
+      return {subj,label,date:ownerEntry.date||"",portions};
+    })
+    .filter(r=>r.date)
+    .sort((a,b)=>a.date.localeCompare(b.date));
+
+  const tbody=document.getElementById("tt-rows");
+  tbody.innerHTML="";
+
+  if(rows.length===0){
+    const tr=document.createElement("tr");
+    const td=document.createElement("td");
+    td.colSpan=4;td.className="tt-empty";
+    td.textContent="No test dates set yet for this class — add them in the Owner portal.";
+    tr.appendChild(td);tbody.appendChild(tr);
+    return;
+  }
+
+  rows.forEach(r=>{
+    const tr=document.createElement("tr");
+
+    if(ttEditMode){
+      const tdDate=document.createElement("td");
+      const inpDate=document.createElement("input");
+      inpDate.type="date";inpDate.value=r.date;inpDate.dataset.origSubject=r.subj;inpDate.className="tt-edit-date";
+      tdDate.appendChild(inpDate);
+
+      const tdDay=document.createElement("td");
+      tdDay.textContent=dayName(r.date);
+      inpDate.addEventListener("input",()=>{tdDay.textContent=dayName(inpDate.value);});
+
+      const tdSubj=document.createElement("td");
+      const inpSubj=document.createElement("input");
+      inpSubj.type="text";inpSubj.value=r.label;inpSubj.dataset.origSubject=r.subj;inpSubj.className="tt-edit-subject";
+      tdSubj.appendChild(inpSubj);
+
+      const tdPort=document.createElement("td");
+      const inpPort=document.createElement("input");
+      inpPort.type="text";inpPort.value=r.portions;inpPort.dataset.origSubject=r.subj;inpPort.className="tt-edit-portions";
+      inpPort.placeholder="Syllabus portion / topic";
+      tdPort.appendChild(inpPort);
+
+      tr.appendChild(tdDate);tr.appendChild(tdDay);tr.appendChild(tdSubj);tr.appendChild(tdPort);
+    }else{
+      [formatDateDMY(r.date),dayName(r.date),r.label,r.portions||"—"].forEach(v=>{
+        const td=document.createElement("td");td.textContent=v;tr.appendChild(td);
+      });
+    }
+    tbody.appendChild(tr);
+  });
+}
+
+async function downloadTimetableImage(){
+  const sheet=document.querySelector("#timetable-view .tt-sheet");
+  const statusEl=document.getElementById("tt-status");
+  try{
+    const canvas=await html2canvas(sheet,{backgroundColor:"#ffffff",scale:2});
+    const link=document.createElement("a");
+    link.download=`${slug(currentClass)}_${currentType}_timetable.png`;
+    link.href=canvas.toDataURL("image/png");
+    link.click();
+  }catch(e){
+    console.error("Image export failed:",e);
+    statusEl.textContent="Could not create image — try again";
+    statusEl.style.color="#B3261E";
+    statusEl.classList.add("show");
+    setTimeout(()=>{statusEl.classList.remove("show");statusEl.textContent="Saved";statusEl.style.color="";},2500);
+  }
+}
+
+function toggleTtEdit(){
+  ttEditMode=true;
+  renderTimetable();
+}
+
+function cancelTtEdit(){
+  ttEditMode=false;
+  renderTimetable();
+}
+
+async function saveTimetableEdits(){
+  const base=(ttMetaCache&&ttMetaCache.subjects)||{};
+  const updated={};
+  Object.keys(base).forEach(s=>{updated[s]={...base[s]};});
+
+  // Each visible row has a date / subject / portions input sharing the same
+  // permanent subject id in data-orig-subject. The id NEVER changes here —
+  // a rename is captured separately as a display label, so date/portions
+  // always stay reachable under their original id.
+  const dateInputs=[...document.querySelectorAll(".tt-edit-date")];
+  const subjInputs=[...document.querySelectorAll(".tt-edit-subject")];
+  const portInputs=[...document.querySelectorAll(".tt-edit-portions")];
+
+  const subjNameMap={};
+  dateInputs.forEach((dateInp,i)=>{
+    const origSubj=dateInp.dataset.origSubject;
+    const subjInp=subjInputs[i];
+    const portInp=portInputs[i];
+    subjNameMap[origSubj]=(subjInp&&subjInp.value.trim())||origSubj;
+
+    updated[origSubj]={
+      date:dateInp.value||"",
+      portions:(portInp?portInp.value.trim():"")
+    };
+  });
+
+  const label=(ttMetaCache&&ttMetaCache.label)||"";
+  try{
+    const res=await setSaved(oKey(),{label,subjects:updated});
+    if(!res)throw new Error("no result");
+    await saveSubjectLabelChanges(currentClass,subjNameMap);
+    ttEditMode=false;
+    // Update the local cache directly from what was just saved and redraw
+    // from that, rather than re-fetching — avoids showing stale data if
+    // the read races ahead of the write.
+    ttMetaCache={label,subjects:updated};
+    ttLabelsCache=await getSubjectLabels(currentClass);
+    flash("tt-status");
+    renderTimetableRows();
+  }catch(e){
+    const el=document.getElementById("tt-status");
+    el.textContent="Could not save — try again";
+    el.style.color="#B3261E";
+    el.classList.add("show");
+    setTimeout(()=>{el.classList.remove("show");el.textContent="Saved";el.style.color="";},2500);
+  }
+}
+
+/* ── Seating Arrangement (manual per-room roll entry + staff dropdown) ── */
+const SEATING_ROOMS=[
+  {id:"gf1",name:"Ground Floor — 1st Half"},
+  {id:"gf2",name:"Ground Floor — 2nd Half"},
+  {id:"ff",name:"First Floor"}
+];
+let seatingDates=[];              // [{id,date,cells:{roomId:{rolls,teacher:{id,name}}}}]
+let seatingRoomsChecked={gf1:true,gf2:true,ff:false};
+let seatingTeachersList=[];       // [{id,name,password}] from settings:teachers
+
+function seatingKey(){return"seating:current";}
+
+function countRolls(str){
+  if(!str)return 0;
+  return str.split(",").map(s=>s.trim()).filter(Boolean).length;
+}
+
+async function renderStaffInvigilation(){
+  if(!loggedInTeacher)return;
+  const tbody=document.getElementById("staff-invigilation-rows");
+  if(!tbody)return;
+
+  const saved=await getSaved(seatingKey());
+  const dates=(saved&&saved.dates)||[];
+  const todayStr=new Date().toISOString().slice(0,10);
+
+  const rows=[];
+  dates.forEach(d=>{
+    SEATING_ROOMS.forEach(r=>{
+      const cell=d.cells&&d.cells[r.id];
+      if(cell&&cell.teacher&&cell.teacher.id===loggedInTeacher.id){
+        rows.push({date:d.date||"",roomName:r.name,count:countRolls(cell.rolls)});
+      }
+    });
+  });
+
+  rows.sort((a,b)=>(a.date||"").localeCompare(b.date||""));
+  const upcoming=rows.filter(r=>r.date&&r.date>=todayStr);
+
+  tbody.innerHTML="";
+
+  if(upcoming.length===0){
+    const tr=document.createElement("tr");
+    const td=document.createElement("td");
+    td.colSpan=3;td.style.cssText="padding:20px;text-align:center;color:var(--text-soft);";
+    td.textContent="No invigilation duty assigned to you right now.";
+    tr.appendChild(td);tbody.appendChild(tr);
+    return;
+  }
+
+  upcoming.forEach(r=>{
+    const tr=document.createElement("tr");
+    const tdDate=document.createElement("td");
+    tdDate.style.cssText="font-weight:600;color:var(--navy-dark);";
+    tdDate.textContent=formatDate(r.date)+" ("+dayName(r.date)+")";
+    const tdRoom=document.createElement("td");
+    tdRoom.textContent=r.roomName;
+    const tdCount=document.createElement("td");
+    tdCount.textContent=r.count;
+    tr.appendChild(tdDate);tr.appendChild(tdRoom);tr.appendChild(tdCount);
+    tbody.appendChild(tr);
+  });
+}
+
+function activeSeatingRooms(){
+  return SEATING_ROOMS.filter(r=>seatingRoomsChecked[r.id]!==false);
+}
+
+function renderSeatingRoomToggles(){
+  const wrap=document.getElementById("seat-room-rows");
+  wrap.innerHTML="";
+  SEATING_ROOMS.forEach(r=>{
+    const label=document.createElement("label");
+    label.className="seat-room-toggle";
+    const chk=document.createElement("input");
+    chk.type="checkbox";
+    chk.checked=seatingRoomsChecked[r.id]!==false;
+    chk.onchange=()=>{
+      seatingRoomsChecked[r.id]=chk.checked;
+      renderSeatingTable();
+    };
+    label.appendChild(chk);
+    label.appendChild(document.createTextNode(r.name));
+    wrap.appendChild(label);
+  });
+}
+
+function buildTeacherSelect(dateId,roomId,selected){
+  const select=document.createElement("select");
+  select.className="seat-teacher-input";
+  select.id="seat-teacher-"+dateId+"-"+roomId;
+
+  const blank=document.createElement("option");
+  blank.value="";blank.textContent="— Select teacher —";
+  select.appendChild(blank);
+
+  let matched=false;
+  seatingTeachersList.forEach(t=>{
+    const opt=document.createElement("option");
+    opt.value=t.id;opt.textContent=t.name;
+    if(selected&&selected.id===t.id){opt.selected=true;matched=true;}
+    select.appendChild(opt);
+  });
+
+  if(selected&&selected.id&&!matched){
+    const opt=document.createElement("option");
+    opt.value=selected.id;
+    opt.textContent=(selected.name||"Unknown")+" (removed from staff list)";
+    opt.selected=true;
+    select.appendChild(opt);
+  }
+  return select;
+}
+
+function collectSeatingStateFromDOM(){
+  seatingDates.forEach(d=>{
+    const dateInput=document.getElementById("seat-date-"+d.id);
+    if(dateInput)d.date=dateInput.value;
+    SEATING_ROOMS.forEach(r=>{
+      const rollsEl=document.getElementById("seat-rolls-"+d.id+"-"+r.id);
+      if(rollsEl)d.cells[r.id].rolls=rollsEl.value;
+      const sel=document.getElementById("seat-teacher-"+d.id+"-"+r.id);
+      if(sel){
+        const opt=sel.options[sel.selectedIndex];
+        d.cells[r.id].teacher=sel.value?{id:sel.value,name:(opt?opt.textContent:"").replace(" (removed from staff list)","")}:null;
+      }
+    });
+  });
+}
+
+function addSeatingDateRow(data){
+  collectSeatingStateFromDOM();
+  const id=(data&&data.id)?data.id:"d"+Date.now()+Math.floor(Math.random()*1000);
+  const cells={};
+  SEATING_ROOMS.forEach(r=>{
+    cells[r.id]={
+      rolls:(data&&data.cells&&data.cells[r.id]&&data.cells[r.id].rolls)||"",
+      teacher:(data&&data.cells&&data.cells[r.id]&&data.cells[r.id].teacher)||null
+    };
+  });
+  seatingDates.push({id,date:(data&&data.date)||"",cells});
+  renderSeatingTable();
+}
+
+function removeSeatingDateRow(id){
+  collectSeatingStateFromDOM();
+  seatingDates=seatingDates.filter(d=>d.id!==id);
+  renderSeatingTable();
+}
+
+function renderSeatingTable(){
+  const rooms=activeSeatingRooms();
+  const thead=document.getElementById("seat-thead");
+  const tbody=document.getElementById("seat-tbody");
+  thead.innerHTML="";
+  tbody.innerHTML="";
+
+  const headRow=document.createElement("tr");
+  let headHtml="<th>Date</th>";
+  rooms.forEach(r=>{headHtml+=`<th>${r.name}</th>`;});
+  headHtml+="<th></th>";
+  headRow.innerHTML=headHtml;
+  thead.appendChild(headRow);
+
+  seatingDates.forEach(d=>{
+    const tr=document.createElement("tr");
+
+    const tdDate=document.createElement("td");
+    const dateInput=document.createElement("input");
+    dateInput.type="date";dateInput.id="seat-date-"+d.id;dateInput.value=d.date||"";
+    tdDate.appendChild(dateInput);
+    tr.appendChild(tdDate);
+
+    rooms.forEach(r=>{
+      const td=document.createElement("td");
+
+      const rollsArea=document.createElement("textarea");
+      rollsArea.className="seat-allrolls-input";
+      rollsArea.id="seat-rolls-"+d.id+"-"+r.id;
+      rollsArea.placeholder="e.g. 9101,9102,9106,7202,8102";
+      rollsArea.value=d.cells[r.id].rolls;
+
+      const countEl=document.createElement("div");
+      countEl.className="seat-count";
+      countEl.textContent="Students: "+countRolls(d.cells[r.id].rolls);
+
+      rollsArea.oninput=()=>{
+        countEl.textContent="Students: "+countRolls(rollsArea.value);
+      };
+
+      const teacherSelect=buildTeacherSelect(d.id,r.id,d.cells[r.id].teacher);
+
+      td.appendChild(rollsArea);
+      td.appendChild(countEl);
+      td.appendChild(teacherSelect);
+      tr.appendChild(td);
+    });
+
+    const tdDel=document.createElement("td");
+    const delBtn=document.createElement("button");
+    delBtn.className="seat-del-btn";
+    delBtn.textContent="✕";
+    delBtn.title="Remove this date";
+    delBtn.onclick=()=>removeSeatingDateRow(d.id);
+    tdDel.appendChild(delBtn);
+    tr.appendChild(tdDel);
+
+    tbody.appendChild(tr);
+  });
+
+  const hasRows=seatingDates.length>0;
+  document.getElementById("seat-table-wrap").style.display=hasRows?"block":"none";
+  document.getElementById("seat-empty-note").style.display=hasRows?"none":"block";
+}
+
+async function renderSeating(){
+  const [saved,teachersStored]=await Promise.all([
+    getSaved(seatingKey()),
+    getSaved("settings:teachers")
+  ]);
+  seatingTeachersList=(teachersStored&&teachersStored.teachers)||[];
+
+  document.getElementById("seat-exam-label").value=(saved&&saved.title)||"";
+  seatingRoomsChecked=(saved&&saved.roomsChecked)||{gf1:true,gf2:true,ff:false};
+  seatingDates=[];
+  renderSeatingRoomToggles();
+
+  if(saved&&saved.dates&&saved.dates.length){
+    saved.dates.forEach(d=>{
+      const cells={};
+      SEATING_ROOMS.forEach(r=>{
+        cells[r.id]={
+          rolls:(d.cells&&d.cells[r.id]&&d.cells[r.id].rolls)||"",
+          teacher:(d.cells&&d.cells[r.id]&&d.cells[r.id].teacher)||null
+        };
+      });
+      seatingDates.push({
+        id:d.id||("d"+Date.now()+Math.floor(Math.random()*1000)),
+        date:d.date||"",
+        cells
+      });
+    });
+  }
+  renderSeatingTable();
+}
+
+async function saveSeatingConfig(){
+  collectSeatingStateFromDOM();
+  const statusEl=document.getElementById("seat-status");
+  const payload={
+    title:document.getElementById("seat-exam-label").value.trim(),
+    roomsChecked:seatingRoomsChecked,
+    dates:seatingDates
+  };
+  try{
+    const res=await setSaved(seatingKey(),payload);
+    if(!res)throw new Error("save failed");
+    flash("seat-status");
+  }catch(e){
+    statusEl.textContent="Could not save — try again";
+    statusEl.style.color="#B3261E";
+    statusEl.classList.add("show");
+    setTimeout(()=>{statusEl.classList.remove("show");statusEl.textContent="Saved";statusEl.style.color="";},2500);
+  }
+}
+
+async function downloadSeatingImage(){
+  collectSeatingStateFromDOM();
+  const sheet=document.getElementById("seat-table-wrap");
+  const statusEl=document.getElementById("seat-status");
+  if(!seatingDates.length){
+    statusEl.textContent="Add at least one exam date first";
+    statusEl.style.color="#B3261E";
+    statusEl.classList.add("show");
+    setTimeout(()=>{statusEl.classList.remove("show");statusEl.textContent="Saved";statusEl.style.color="";},2500);
+    return;
+  }
+
+  // Temporarily expand the wrap so html2canvas captures the FULL table,
+  // not just whatever portion is currently scrolled into view.
+  const prevOverflowX=sheet.style.overflowX;
+  const prevOverflowY=sheet.style.overflowY;
+  const prevWidth=sheet.style.width;
+  const prevMaxWidth=sheet.style.maxWidth;
+  sheet.scrollLeft=0;
+  sheet.style.overflowX="visible";
+  sheet.style.overflowY="visible";
+  sheet.style.maxWidth="none";
+  sheet.style.width=sheet.scrollWidth+"px";
+
+  try{
+    const canvas=await html2canvas(sheet,{
+      backgroundColor:"#ffffff",
+      scale:2,
+      width:sheet.scrollWidth,
+      height:sheet.scrollHeight,
+      windowWidth:sheet.scrollWidth,
+      windowHeight:sheet.scrollHeight
+    });
+    const link=document.createElement("a");
+    const label=slug(document.getElementById("seat-exam-label").value.trim()||"seating_arrangement");
+    link.download=`${label}.png`;
+    link.href=canvas.toDataURL("image/png");
+    link.click();
+  }catch(e){
+    console.error("Image export failed:",e);
+    statusEl.textContent="Could not create image — try again";
+    statusEl.style.color="#B3261E";
+    statusEl.classList.add("show");
+    setTimeout(()=>{statusEl.classList.remove("show");statusEl.textContent="Saved";statusEl.style.color="";},2500);
+  }finally{
+    sheet.style.overflowX=prevOverflowX;
+    sheet.style.overflowY=prevOverflowY;
+    sheet.style.width=prevWidth;
+    sheet.style.maxWidth=prevMaxWidth;
+  }
+}
+
+/* ── Helpers ── */
+function formatDate(iso){
+  if(!iso)return"";
+  const [y,m,d]=iso.split("-");
+  const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
+}
+function formatDateDMY(iso){
+  if(!iso)return"";
+  const [y,m,d]=iso.split("-");
+  return `${d}-${m}-${y}`;
+}
+function dayName(iso){
+  if(!iso)return"";
+  const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const d=new Date(iso+"T00:00:00");
+  return days[d.getDay()];
+}
+function flash(id){
+  const el=document.getElementById(id);
+  el.classList.add("show");
+  setTimeout(()=>el.classList.remove("show"),1800);
+}
+
+/* ── Update checker ──
+   Bump APP_VERSION every time you edit and redeploy this file. Format:
+   YYYY-MM-DD-N (N = which change that day, so it still sorts correctly
+   as plain text). The FIRST person to open a build with a higher
+   version than what's stored publishes it to everyone else; anyone
+   already on an older tab gets a "Refresh" banner instead of silently
+   working on stale data. */
+const APP_VERSION="2026-08-06-1";
+
+async function syncAppVersion(){
+  try{
+    const saved=await getSaved("settings:app-version");
+    const remote=(saved&&saved.version)||"";
+    if(!remote||APP_VERSION>remote){
+      await setSaved("settings:app-version",{version:APP_VERSION});
+      return;
+    }
+    if(remote>APP_VERSION) showUpdateBanner();
+  }catch(e){console.error("Version check failed:",e);}
+}
+
+function showUpdateBanner(){
+  if(document.getElementById("update-banner")) return;
+  const bar=document.createElement("div");
+  bar.id="update-banner";
+  bar.innerHTML=`<span>A newer version of this app is available — refresh to get the latest changes.</span>`;
+  const btn=document.createElement("button");
+  btn.textContent="Refresh now";
+  btn.onclick=()=>location.reload();
+  bar.appendChild(btn);
+  document.body.appendChild(bar);
+}
+
+renderSidebar();
+renderTeacher();
+updateSeatingTabState();
+syncAppVersion();
+setInterval(syncAppVersion,3*60*1000); // re-check every 3 min in case a tab is left open all day
+</script>
+</body>
+</html>
