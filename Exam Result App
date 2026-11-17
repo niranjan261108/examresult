@@ -1,0 +1,2186 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VISHNU TUITION CENTRE EXAM RESULT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-container": "#010766", "on-surface-variant": "#464651",
+          "secondary-fixed": "#dae1ff", "on-secondary-fixed": "#001849",
+          "on-primary-fixed": "#010766", "surface-tint": "#4e56ab",
+          "secondary": "#3f5ba3", "surface-container-highest": "#e3e2e2",
+          "error-container": "#ffdad6", "error-fail": "#b71c1c",
+          "surface-container-lowest": "#ffffff", "management-surface": "#f0f2f5",
+          "on-primary": "#ffffff", "success-pass": "#1b5e20",
+          "on-tertiary-fixed": "#410000", "on-secondary-fixed-variant": "#25438a",
+          "primary-fixed-dim": "#bdc2ff", "tertiary-container": "#410000",
+          "surface-container-high": "#e9e8e7", "on-background": "#1b1c1c",
+          "surface-container-low": "#f5f3f3", "inverse-surface": "#303030",
+          "on-tertiary": "#ffffff", "on-secondary-container": "#234288",
+          "on-tertiary-container": "#cb6657", "primary": "#000000",
+          "warning-pending": "#f57c00", "background": "#fbf9f8",
+          "error": "#ba1a1a", "border-subtle": "#d1d5db", "on-surface": "#1b1c1c",
+          "secondary-fixed-dim": "#b3c5ff", "surface": "#fbf9f8",
+          "secondary-container": "#96b1ff", "outline": "#767683",
+          "outline-variant": "#c6c5d3", "on-primary-fixed-variant": "#353e91",
+          "tertiary-fixed": "#ffdad4", "surface-variant": "#e3e2e2",
+          "inverse-on-surface": "#f2f0f0", "on-primary-container": "#747cd3",
+          "on-error-container": "#93000a", "surface-bright": "#fbf9f8",
+          "tertiary-fixed-dim": "#ffb4a8", "on-secondary": "#ffffff",
+          "tertiary": "#000000", "surface-container": "#efeded",
+          "primary-fixed": "#e0e0ff", "on-tertiary-fixed-variant": "#7d2b21",
+          "inverse-primary": "#bdc2ff", "surface-dim": "#dbdad9",
+          "surface-alt": "#e8eefa", "on-error": "#ffffff"
+        },
+        borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+        spacing: { "margin-desktop": "64px", gutter: "24px", "container-max": "1280px", "margin-mobile": "16px", unit: "4px" },
+        fontFamily: {
+          "headline-lg-mobile": ["Inter"], "headline-lg": ["Inter"], "body-sm": ["Inter"],
+          "headline-md": ["Inter"], "label-md": ["Inter"], "body-lg": ["Inter"],
+          "body-md": ["Inter"], "data-mono": ["Inter"], "label-sm": ["Inter"], display: ["Inter"]
+        },
+        fontSize: {
+          "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+          "headline-lg": ["28px", { lineHeight: "36px", fontWeight: "700" }],
+          "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+          "headline-md": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+          "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+          "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+          "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+          "data-mono": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "500" }],
+          "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }],
+          display: ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .view { display: none; }
+  .view.active { display: block; }
+  @media print {
+    .no-print { display: none !important; }
+    body { background-color: white; }
+  }
+  .spinner { border: 3px solid #e3e2e2; border-top-color: #010766; border-radius: 50%; width: 20px; height: 20px; animation: spin .7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body class="bg-management-surface text-on-surface antialiased min-h-screen flex flex-col">
+
+<div id="toast-container" class="fixed top-4 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-2 items-center"></div>
+
+<section id="view-search" class="view active flex-grow flex flex-col">
+  <header class="bg-surface border-b border-border-subtle w-full h-16 flex items-center justify-between px-margin-mobile md:px-margin-desktop flex-shrink-0">
+    <div class="font-headline-md text-headline-md font-bold text-primary truncate">VISHNU TUITION CENTRE EXAM RESULT</div>
+    <button id="btn-goto-staff-login" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center whitespace-nowrap active:scale-95 duration-200">
+      Staff Login <span class="material-symbols-outlined ml-1 text-[18px]">login</span>
+    </button>
+  </header>
+  <main class="flex-grow flex items-center justify-center p-margin-mobile overflow-y-auto">
+    <div class="w-full max-w-md py-8">
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-surface-container-high mb-4">
+          <span class="material-symbols-outlined text-[32px] text-primary">school</span>
+        </div>
+        <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2">VISHNU TUITION</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant">Check Your Examination Result</p>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl border border-border-subtle shadow-sm p-6 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-primary-container"></div>
+        <h2 class="font-headline-md text-headline-md text-primary mb-6 border-b border-border-subtle pb-4 flex items-center">
+          <span class="material-symbols-outlined mr-2">search</span> EXAMINATION RESULT
+        </h2>
+        <form id="search-form" class="space-y-5">
+          <div>
+            <label class="block font-label-md text-label-md text-on-surface mb-2" for="rollNumber">Roll Number</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <span class="material-symbols-outlined text-on-surface-variant">pin</span>
+              </div>
+              <input class="block w-full pl-10 pr-3 py-4 border border-border-subtle rounded-lg bg-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent font-data-mono text-data-mono" id="rollNumber" name="rollNumber" placeholder="e.g. VTC20230451" required type="text"/>
+            </div>
+          </div>
+          <div>
+            <label class="block font-label-md text-label-md text-on-surface mb-2" for="dob">Date of Birth</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <span class="material-symbols-outlined text-on-surface-variant">calendar_month</span>
+              </div>
+              <input class="block w-full pl-10 pr-3 py-4 border border-border-subtle rounded-lg bg-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent" id="dob" name="dob" required type="date"/>
+            </div>
+            <p class="mt-2 font-body-sm text-body-sm text-on-surface-variant">Used only to verify it's really you — nothing else.</p>
+          </div>
+          <div id="search-error" class="hidden font-body-sm text-body-sm text-error-fail bg-error-container/40 border border-error-fail/30 rounded-lg px-4 py-3"></div>
+          <button id="search-submit" class="w-full bg-primary-container text-on-primary font-label-md text-label-md py-4 px-6 rounded-lg hover:bg-surface-tint active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_2px_4px_rgba(0,0,0,0.1)]" type="submit">
+            <span id="search-submit-text">VIEW RESULT</span>
+            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</section>
+<section id="view-countdown" class="view flex-grow flex flex-col">
+  <header class="bg-surface border-b border-border-subtle w-full h-16 flex items-center justify-between px-margin-mobile md:px-margin-desktop flex-shrink-0">
+    <div class="font-headline-md text-headline-md font-bold text-primary truncate">VISHNU TUITION CENTRE EXAM RESULT</div>
+    <button class="btn-back-to-search font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center">
+      <span class="material-symbols-outlined mr-1 text-[18px]">arrow_back</span> Back
+    </button>
+  </header>
+  <main class="flex-grow flex items-center justify-center p-margin-mobile">
+    <div class="w-full max-w-md text-center bg-surface-container-lowest rounded-xl border border-border-subtle shadow-sm p-8">
+      <span id="countdown-icon" class="material-symbols-outlined text-[48px] text-warning-pending mb-4 block">hourglass_top</span>
+      <h2 id="countdown-title" class="font-headline-md text-headline-md text-primary mb-2">RESULTS NOT YET PUBLISHED</h2>
+      <p id="countdown-message" class="font-body-md text-body-md text-on-surface-variant mb-6">Please check back once results are published.</p>
+    </div>
+  </main>
+</section>
+<section id="view-result" class="view flex-grow flex flex-col">
+  <header class="bg-surface border-b border-border-subtle no-print">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop w-full h-16 max-w-container-max mx-auto">
+      <span class="font-headline-md text-headline-md font-bold text-primary tracking-tight truncate">VISHNU TUITION CENTRE EXAM RESULT</span>
+      <button class="btn-back-to-search font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center whitespace-nowrap">
+        <span class="material-symbols-outlined mr-1 text-[18px]">arrow_back</span> New Search
+      </button>
+    </div>
+  </header>
+  <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 flex flex-col gap-8">
+    <div class="w-full flex justify-end no-print">
+      <button onclick="window.print()" class="flex items-center gap-2 bg-primary-container text-on-primary font-label-md px-6 py-2.5 rounded hover:bg-primary-container/90 active:scale-95 transition-transform shadow-sm">
+        <span class="material-symbols-outlined text-sm">print</span> Print Marksheet
+      </button>
+    </div>
+    <div class="bg-surface-container-lowest border border-border-subtle rounded-lg shadow-sm overflow-hidden flex flex-col">
+      <div class="bg-primary-container text-on-primary p-8 text-center flex flex-col gap-2">
+        <h1 class="font-headline-lg text-headline-lg md:text-display md:font-display">VISHNU TUITION CENTRE</h1>
+        <p class="font-body-lg text-body-lg text-primary-fixed-dim">STATEMENT OF MARKS</p>
+      </div>
+      <div class="p-6 md:p-8 flex flex-col gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 bg-management-surface rounded border border-border-subtle">
+          <div class="flex flex-col gap-1"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Student Name</span><span id="r-name" class="font-body-md text-body-md font-semibold"></span></div>
+          <div class="flex flex-col gap-1"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Roll Number</span><span id="r-roll" class="font-data-mono text-data-mono text-primary font-bold"></span></div>
+          <div class="flex flex-col gap-1"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Class</span><span id="r-class" class="font-body-md text-body-md font-semibold"></span></div>
+          <div class="flex flex-col gap-1"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Examination</span><span id="r-exam" class="font-body-md text-body-md font-semibold"></span></div>
+          <div class="flex flex-col gap-1"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Academic Year</span><span id="r-year" class="font-body-md text-body-md font-semibold"></span></div>
+        </div>
+        <div class="w-full overflow-x-auto rounded border border-border-subtle">
+          <table class="w-full text-left border-collapse min-w-[700px]">
+            <thead>
+              <tr class="bg-primary-container text-on-primary">
+                <th class="py-3 px-4 font-label-md text-label-md uppercase w-1/3">Subject</th>
+                <th class="py-3 px-4 font-label-md text-label-md uppercase text-center">Max Marks</th>
+                <th class="py-3 px-4 font-label-md text-label-md uppercase text-center">Pass Marks</th>
+                <th class="py-3 px-4 font-label-md text-label-md uppercase text-center">Obtained Marks</th>
+                <th class="py-3 px-4 font-label-md text-label-md uppercase text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody id="r-subjects-body" class="font-data-mono text-data-mono"></tbody>
+          </table>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="flex flex-col items-center justify-center p-6 bg-surface border border-border-subtle rounded">
+            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Total Marks</span>
+            <div class="flex items-baseline gap-1"><span id="r-total" class="font-headline-lg text-headline-lg font-bold text-primary"></span><span class="font-body-md text-body-md text-on-surface-variant">/ <span id="r-total-max"></span></span></div>
+          </div>
+          <div class="flex flex-col items-center justify-center p-6 bg-surface border border-border-subtle rounded">
+            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Percentage</span>
+            <span id="r-percentage" class="font-headline-lg text-headline-lg font-bold text-primary"></span>
+          </div>
+          <div id="r-overall-box" class="flex flex-col items-center justify-center p-6 rounded border">
+            <span id="r-overall-label" class="font-label-sm text-label-sm uppercase mb-1">Overall Result</span>
+            <span id="r-overall" class="font-headline-lg text-headline-lg font-bold"></span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-management-surface p-4 text-center border-t border-border-subtle">
+        <p class="font-label-sm text-label-sm text-on-surface-variant">This is a computer-generated statement and does not require a physical signature.</p>
+        <p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Generated on: <span id="current-date"></span></p>
+      </div>
+    </div>
+  </main>
+</section>
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+  const SUPABASE_URL = 'https://qeqpfnijcbqdipoesgqa.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_HK1-UOtqcuELAfZ1N8gSXA_6mG_Ngl5';
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+function showToast(message, isError) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `px-5 py-3 rounded-lg shadow-lg font-label-md text-label-md flex items-center gap-2 ${isError ? 'bg-error-fail text-white' : 'bg-success-pass text-white'}`;
+    toast.innerHTML = `<span class="material-symbols-outlined text-[18px]">${isError ? 'error' : 'check_circle'}</span> ${message}`;
+    container.appendChild(toast);
+    setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity .3s'; setTimeout(() => toast.remove(), 300); }, 2200);
+  }
+
+
+  // ---- view router ----
+  // On this public page, only the search / countdown / result views ever
+  // exist. Staff login and the Teacher/Owner dashboards live entirely in
+  // a separate file (staff.html) -- they are never part of this page's
+  // markup at all, not even hidden.
+  function showView(id) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+  document.querySelectorAll('.btn-back-to-search').forEach(b => b.addEventListener('click', () => showView('view-search')));
+
+  // Checks the owner's timed lock (set from the staff portal). While
+  // active, the "Staff Login" link is hidden on this page too, so
+  // students aren't even shown a way to reach it.
+  async function isEverythingLocked() {
+    const { data: settings } = await supabase.from('system_settings').select('hide_staff_login_until').eq('id', 1).single();
+    const until = settings?.hide_staff_login_until ? new Date(settings.hide_staff_login_until) : null;
+    return !!(until && until.getTime() > Date.now());
+  }
+  async function applyStaffLoginVisibility() {
+    const locked = await isEverythingLocked();
+    const btn = document.getElementById('btn-goto-staff-login');
+    if (btn) btn.classList.toggle('hidden', !!locked);
+  }
+  applyStaffLoginVisibility();
+  setInterval(applyStaffLoginVisibility, 60 * 1000);
+
+  // The Staff Login button takes staff to a completely separate page --
+  // this page never contains any staff/teacher/owner markup or logic.
+  document.getElementById('btn-goto-staff-login').addEventListener('click', async () => {
+    if (await isEverythingLocked()) {
+      showToast('Staff access is temporarily unavailable. Please try again later.', true);
+      return;
+    }
+    window.location.href = 'staff.html';
+  });
+
+  // ---- search form ----
+  document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  const form = document.getElementById('search-form');
+  const errorBox = document.getElementById('search-error');
+  const submitBtn = document.getElementById('search-submit');
+  const submitText = document.getElementById('search-submit-text');
+
+  function setLoading(loading) {
+    submitBtn.disabled = loading;
+    submitText.textContent = loading ? 'Searching...' : 'VIEW RESULT';
+  }
+
+  function showError(msg) {
+    errorBox.textContent = msg;
+    errorBox.classList.remove('hidden');
+  }
+  function hideError() {
+    errorBox.classList.add('hidden');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError();
+    const roll = document.getElementById('rollNumber').value.trim();
+    const dob = document.getElementById('dob').value;
+    if (!roll || !dob) return;
+
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.rpc('get_student_result', { p_roll: roll, p_dob: dob });
+      setLoading(false);
+
+      if (error) {
+        showError('Something went wrong. Please try again in a moment.');
+        console.error(error);
+        return;
+      }
+
+      if (data && data.error === 'NOT_FOUND') {
+        showError('No student found with that roll number and date of birth. Please check and try again.');
+        return;
+      }
+      if (data && data.error === 'END_EXAM_RESULT_ACTIVE') {
+        showCountdownScreen('END_EXAM_RESULT_ACTIVE');
+        return;
+      }
+      if (data && data.error === 'NOT_PUBLISHED') {
+        showCountdownScreen('NOT_PUBLISHED');
+        return;
+      }
+
+      renderResult(data);
+      showView('view-result');
+    } catch (err) {
+      setLoading(false);
+      showError('Could not reach the server. Please check your connection and try again.');
+      console.error(err);
+    }
+  });
+
+  function showCountdownScreen(reason) {
+    const icon = document.getElementById('countdown-icon');
+    const title = document.getElementById('countdown-title');
+    const message = document.getElementById('countdown-message');
+    if (reason === 'END_EXAM_RESULT_ACTIVE') {
+      icon.textContent = 'lock';
+      title.textContent = 'RESULT ACCESS TEMPORARILY UNAVAILABLE';
+      message.textContent = 'Please contact the tuition centre for more information.';
+    } else {
+      icon.textContent = 'hourglass_top';
+      title.textContent = 'RESULTS NOT YET PUBLISHED';
+      message.textContent = 'Your result has not been published yet. Please check back later.';
+    }
+    showView('view-countdown');
+  }
+
+  function renderResult(data) {
+    document.getElementById('r-name').textContent = data.student.name;
+    document.getElementById('r-roll').textContent = data.student.roll_number;
+    document.getElementById('r-class').textContent = data.student.class;
+    document.getElementById('r-exam').textContent = data.examination.name;
+    document.getElementById('r-year').textContent = data.examination.academic_year;
+
+    const subjects = data.subjects || [];
+    const tbody = document.getElementById('r-subjects-body');
+    tbody.innerHTML = '';
+    let totalObtained = 0, totalMax = 0, overallPass = true;
+
+    subjects.forEach((s, i) => {
+      totalObtained += Number(s.obtained_marks);
+      totalMax += Number(s.max_marks);
+      if (s.status === 'FAIL') overallPass = false;
+
+      const isFail = s.status === 'FAIL';
+      const tr = document.createElement('tr');
+      tr.className = `border-b border-border-subtle transition-colors ${isFail ? 'bg-error-container/10 hover:bg-error-container/20' : (i % 2 ? 'bg-surface' : '') + ' hover:bg-surface-alt'}`;
+      tr.innerHTML = `
+        <td class="py-3 px-4 font-body-md text-body-md font-medium ${isFail ? 'text-error-fail' : 'text-primary'}">${s.subject}</td>
+        <td class="py-3 px-4 text-center text-on-surface-variant">${s.max_marks}</td>
+        <td class="py-3 px-4 text-center text-on-surface-variant">${s.pass_marks}</td>
+        <td class="py-3 px-4 text-center font-bold ${isFail ? 'text-error-fail' : 'text-primary'}">${s.obtained_marks}</td>
+        <td class="py-3 px-4 text-center">
+          <span class="inline-flex items-center justify-center px-2 py-1 rounded font-label-sm text-label-sm uppercase ${isFail ? 'bg-error-container text-error-fail font-bold border border-error-fail/30' : 'bg-secondary-fixed text-on-secondary-fixed'}">${s.status}</span>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+
+    document.getElementById('r-total').textContent = totalObtained;
+    document.getElementById('r-total-max').textContent = totalMax;
+    const pct = totalMax > 0 ? (totalObtained / totalMax * 100).toFixed(2) : '0.00';
+    document.getElementById('r-percentage').textContent = pct + '%';
+
+    const overallBox = document.getElementById('r-overall-box');
+    const overallLabel = document.getElementById('r-overall-label');
+    const overall = document.getElementById('r-overall');
+    if (overallPass && subjects.length > 0) {
+      overallBox.className = 'flex flex-col items-center justify-center p-6 rounded border bg-secondary-fixed/20 border-success-pass/30';
+      overallLabel.className = 'font-label-sm text-label-sm uppercase mb-1 text-success-pass';
+      overall.className = 'font-headline-lg text-headline-lg font-bold text-success-pass';
+      overall.textContent = 'PASS';
+    } else {
+      overallBox.className = 'flex flex-col items-center justify-center p-6 rounded border bg-error-container/20 border-error-fail/30';
+      overallLabel.className = 'font-label-sm text-label-sm uppercase mb-1 text-error-fail';
+      overall.className = 'font-headline-lg text-headline-lg font-bold text-error-fail';
+      overall.textContent = 'FAIL';
+    }
+
+
+
+
+
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VISHNU TUITION CENTRE EXAM RESULT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-container": "#010766", "on-surface-variant": "#464651",
+          "secondary-fixed": "#dae1ff", "on-secondary-fixed": "#001849",
+          "on-primary-fixed": "#010766", "surface-tint": "#4e56ab",
+          "secondary": "#3f5ba3", "surface-container-highest": "#e3e2e2",
+          "error-container": "#ffdad6", "error-fail": "#b71c1c",
+          "surface-container-lowest": "#ffffff", "management-surface": "#f0f2f5",
+          "on-primary": "#ffffff", "success-pass": "#1b5e20",
+          "on-tertiary-fixed": "#410000", "on-secondary-fixed-variant": "#25438a",
+          "primary-fixed-dim": "#bdc2ff", "tertiary-container": "#410000",
+          "surface-container-high": "#e9e8e7", "on-background": "#1b1c1c",
+          "surface-container-low": "#f5f3f3", "inverse-surface": "#303030",
+          "on-tertiary": "#ffffff", "on-secondary-container": "#234288",
+          "on-tertiary-container": "#cb6657", "primary": "#000000",
+          "warning-pending": "#f57c00", "background": "#fbf9f8",
+          "error": "#ba1a1a", "border-subtle": "#d1d5db", "on-surface": "#1b1c1c",
+          "secondary-fixed-dim": "#b3c5ff", "surface": "#fbf9f8",
+          "secondary-container": "#96b1ff", "outline": "#767683",
+          "outline-variant": "#c6c5d3", "on-primary-fixed-variant": "#353e91",
+          "tertiary-fixed": "#ffdad4", "surface-variant": "#e3e2e2",
+          "inverse-on-surface": "#f2f0f0", "on-primary-container": "#747cd3",
+          "on-error-container": "#93000a", "surface-bright": "#fbf9f8",
+          "tertiary-fixed-dim": "#ffb4a8", "on-secondary": "#ffffff",
+          "tertiary": "#000000", "surface-container": "#efeded",
+          "primary-fixed": "#e0e0ff", "on-tertiary-fixed-variant": "#7d2b21",
+          "inverse-primary": "#bdc2ff", "surface-dim": "#dbdad9",
+          "surface-alt": "#e8eefa", "on-error": "#ffffff"
+        },
+        borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+        spacing: { "margin-desktop": "64px", gutter: "24px", "container-max": "1280px", "margin-mobile": "16px", unit: "4px" },
+        fontFamily: {
+          "headline-lg-mobile": ["Inter"], "headline-lg": ["Inter"], "body-sm": ["Inter"],
+          "headline-md": ["Inter"], "label-md": ["Inter"], "body-lg": ["Inter"],
+          "body-md": ["Inter"], "data-mono": ["Inter"], "label-sm": ["Inter"], display: ["Inter"]
+        },
+        fontSize: {
+          "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+          "headline-lg": ["28px", { lineHeight: "36px", fontWeight: "700" }],
+          "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+          "headline-md": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+          "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+          "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+          "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+          "data-mono": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "500" }],
+          "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }],
+          display: ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .view { display: none; }
+  .view.active { display: block; }
+  @media print {
+    .no-print { display: none !important; }
+    body { background-color: white; }
+  }
+  .spinner { border: 3px solid #e3e2e2; border-top-color: #010766; border-radius: 50%; width: 20px; height: 20px; animation: spin .7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body class="bg-management-surface text-on-surface antialiased min-h-screen flex flex-col">
+
+<div id="toast-container" class="fixed top-4 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-2 items-center"></div>
+
+<section id="view-staff-login" class="view flex-grow flex items-center justify-center p-margin-mobile md:p-margin-desktop bg-management-surface">
+  <main class="w-full max-w-5xl bg-surface-container-lowest border border-border-subtle rounded-xl flex flex-col md:flex-row overflow-hidden shadow-sm min-h-[600px]">
+    <section class="hidden md:flex md:w-5/12 bg-primary-container relative p-10 flex-col justify-between text-on-primary overflow-hidden">
+      <div class="relative z-10 space-y-4">
+        <div class="flex items-center space-x-3">
+          <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+          <div>
+            <h1 class="font-headline-md text-headline-md font-bold tracking-tight">VISHNU TUITION</h1>
+            <p class="font-label-sm text-label-sm text-primary-fixed-dim uppercase tracking-widest">Management Panel</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative z-10">
+        <h2 class="font-headline-lg text-headline-lg mb-4 leading-tight">Secure Staff <br/>Authentication</h2>
+        <p class="font-body-sm text-body-sm text-primary-fixed-dim max-w-xs">Authorized personnel only. Access strictly monitored and logged for institutional security.</p>
+      </div>
+    </section>
+    <section class="w-full md:w-7/12 p-8 md:p-16 flex flex-col justify-center bg-surface-container-lowest relative">
+      <div class="md:hidden flex flex-col items-center mb-8 text-center space-y-2">
+        <span class="material-symbols-outlined text-4xl text-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+        <h1 class="font-headline-md text-headline-md font-bold text-primary-container">VISHNU TUITION</h1>
+        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Management Panel</p>
+      </div>
+      <div class="max-w-md w-full mx-auto space-y-8">
+        <div>
+          <h3 class="font-headline-md text-headline-md font-bold text-on-surface">Welcome back</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Please select your profile and enter your credentials to access the portal.</p>
+        </div>
+        <form id="staff-login-form" class="space-y-6">
+          <div class="space-y-2 relative">
+            <label class="block font-label-md text-label-md text-on-surface" for="staff-select">Staff Member</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant">
+                <span class="material-symbols-outlined">person</span>
+              </div>
+              <select class="block w-full pl-10 pr-10 py-3 text-body-md font-body-md text-on-surface bg-surface border border-border-subtle rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container transition-colors cursor-pointer" id="staff-select" required>
+                <option disabled selected value="">Select authorized personnel</option>
+              </select>
+            </div>
+          </div>
+          <div id="staff-login-endexam-notice" class="hidden font-body-sm text-body-sm text-warning-pending bg-warning-pending/10 border border-warning-pending/30 rounded-lg px-4 py-3">
+            Staff access is currently limited to the Owner only.
+          </div>
+          <div class="space-y-2">
+            <label class="block font-label-md text-label-md text-on-surface" for="staff-password">Security Credential</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant">
+                <span class="material-symbols-outlined">lock</span>
+              </div>
+              <input class="block w-full pl-10 pr-12 py-3 text-body-md font-body-md text-on-surface bg-surface border border-border-subtle rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container transition-colors" id="staff-password" placeholder="Enter your password" required type="password"/>
+              <button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3 flex items-center text-on-surface-variant hover:text-on-surface focus:outline-none transition-colors" id="toggle-staff-password" type="button">
+                <span class="material-symbols-outlined" id="staff-visibility-icon">visibility</span>
+              </button>
+            </div>
+          </div>
+          <div id="staff-login-error" class="hidden font-body-sm text-body-sm text-error-fail bg-error-container/40 border border-error-fail/30 rounded-lg px-4 py-3"></div>
+          <div class="pt-4">
+            <button id="staff-login-submit" class="w-full flex items-center justify-center space-x-2 bg-primary-container text-on-primary font-label-md text-label-md py-3.5 px-4 rounded-lg hover:bg-on-secondary-fixed-variant active:scale-95 transition-all shadow-sm" type="submit">
+              <span id="staff-login-submit-text">AUTHORIZE LOGIN</span>
+              <span class="material-symbols-outlined text-sm">login</span>
+            </button>
+          </div>
+        </form>
+        <div class="flex items-center justify-center space-x-2 pt-2">
+          <div class="w-2 h-2 rounded-full bg-success-pass"></div>
+          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">System Operational</span>
+        </div>
+        <div class="text-center">
+          <button class="btn-back-to-search font-label-md text-label-md text-primary underline">← Back to result search</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</section>
+<!-- Staff portal mount point: the Teacher/Owner dashboard <section> nodes
+     below are detached from the document at the end of the script (see
+     detachStaffPortals/mountStaffPortal/unmountStaffPortal) and only
+     re-attached here after a real successful Supabase login + role
+     check. When empty, there is genuinely no staff markup in the page. -->
+<div id="staff-portal-mount"></div>
+<section id="view-teacher-dashboard" class="view flex-grow flex flex-col bg-management-surface">
+  <header class="bg-surface border-b border-border-subtle w-full h-16 flex items-center justify-between px-margin-mobile md:px-margin-desktop flex-shrink-0">
+    <div class="font-headline-md text-headline-md font-bold text-primary truncate">VISHNU TUITION CENTRE</div>
+    <div class="flex items-center gap-4">
+      <span id="teacher-name-display" class="font-body-md text-body-md text-on-surface-variant hidden md:inline"></span>
+      <button id="btn-teacher-bell" class="relative text-on-surface-variant hover:text-primary">
+        <span class="material-symbols-outlined">notifications</span>
+        <span id="teacher-bell-count" class="hidden absolute -top-1 -right-1 bg-error-fail text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">0</span>
+      </button>
+      <button id="btn-teacher-owner-login" class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1 mr-2"><span class="material-symbols-outlined text-[18px]">shield_person</span> Owner Login</button>
+      <button id="btn-teacher-logout" class="font-label-md text-label-md text-error-fail hover:underline flex items-center gap-1">
+        <span class="material-symbols-outlined text-[18px]">logout</span> Logout
+      </button>
+    </div>
+  </header>
+  <div id="teacher-notif-dropdown" class="hidden absolute right-4 top-16 z-40 w-80 max-h-96 overflow-y-auto bg-surface-container-lowest border border-border-subtle rounded-lg shadow-lg"></div>
+
+  <div class="flex border-b border-border-subtle bg-surface px-margin-mobile md:px-margin-desktop">
+    <button class="teacher-tab-btn px-4 py-3 font-label-md text-label-md border-b-2 border-primary text-primary" data-tab="students">My Students</button>
+    <button class="teacher-tab-btn px-4 py-3 font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant" data-tab="marks">Marks Entry</button>
+    <button class="teacher-tab-btn px-4 py-3 font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant" data-tab="exams">Examinations</button>
+  </div>
+
+  <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col gap-6 w-full">
+
+    <!-- STUDENTS TAB -->
+    <div id="teacher-tab-students" class="teacher-tab-panel flex flex-col gap-4">
+      <div class="bg-surface-container-lowest border border-border-subtle rounded p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div class="flex-1 w-full sm:max-w-md relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+          <input id="student-search-input" class="w-full bg-surface border border-border-subtle rounded py-2 pl-10 pr-4 text-body-sm font-body-sm" placeholder="Search by name or roll number..." type="text"/>
+        </div>
+        <button id="btn-open-add-student" class="w-full sm:w-auto bg-primary-container text-on-primary px-4 py-2 rounded font-label-md text-label-md shadow-sm hover:bg-surface-tint transition-colors active:scale-95 flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">person_add</span> ADD STUDENT
+        </button>
+        <button id="btn-open-bulk-add" class="w-full sm:w-auto bg-surface-container-highest text-on-surface px-4 py-2 rounded font-label-md text-label-md border border-border-subtle hover:bg-surface-variant transition-colors active:scale-95 flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">upload_file</span> BULK ADD
+        </button>
+      </div>
+      <div class="bg-surface-container-lowest border border-border-subtle rounded overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse min-w-[700px]">
+            <thead class="bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+              <tr>
+                <th class="py-3 px-4 font-semibold">Roll Number</th>
+                <th class="py-3 px-4 font-semibold">Student Name</th>
+                <th class="py-3 px-4 font-semibold">Class</th>
+                <th class="py-3 px-4 font-semibold">Your Subjects</th>
+                <th class="py-3 px-4 font-semibold text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="student-list-body" class="divide-y divide-border-subtle text-body-sm font-body-sm"></tbody>
+          </table>
+        </div>
+        <div id="student-list-empty" class="hidden p-8 text-center font-body-sm text-body-sm text-on-surface-variant">No students found yet in your assigned classes.</div>
+      </div>
+    </div>
+
+    <!-- MARKS ENTRY TAB -->
+    <div id="teacher-tab-marks" class="teacher-tab-panel hidden flex-col gap-4">
+      <div class="bg-surface-container-lowest border border-border-subtle rounded p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="block font-label-md text-label-md mb-1">Examination</label>
+          <select id="marks-exam-select" class="w-full border border-border-subtle rounded py-2 px-3 bg-surface text-body-sm font-body-sm"></select>
+        </div>
+        <div>
+          <label class="block font-label-md text-label-md mb-1">Class</label>
+          <select id="marks-class-select" class="w-full border border-border-subtle rounded py-2 px-3 bg-surface text-body-sm font-body-sm"></select>
+        </div>
+        <div>
+          <label class="block font-label-md text-label-md mb-1">Subject</label>
+          <select id="marks-subject-select" class="w-full border border-border-subtle rounded py-2 px-3 bg-surface text-body-sm font-body-sm"></select>
+        </div>
+      </div>
+      <div id="marks-no-exams" class="hidden bg-surface-container-lowest border border-border-subtle rounded p-8 text-center font-body-sm text-body-sm text-on-surface-variant">
+        No examinations have been configured yet. Please ask the owner to set one up first.
+      </div>
+      <div id="marks-entry-area" class="hidden bg-surface-container-lowest border border-border-subtle rounded overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse min-w-[600px]">
+            <thead class="bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+              <tr>
+                <th class="py-3 px-4">Roll Number</th>
+                <th class="py-3 px-4">Student Name</th>
+                <th class="py-3 px-4 text-center">Max Marks</th>
+                <th class="py-3 px-4 text-center">Obtained Marks</th>
+                <th class="py-3 px-4 text-center">Not Appearing</th>
+                <th class="py-3 px-4 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody id="marks-entry-body" class="divide-y divide-border-subtle text-body-sm font-body-sm"></tbody>
+          </table>
+        </div>
+        <div class="p-4 border-t border-border-subtle flex flex-col sm:flex-row justify-between items-center gap-3">
+          <div id="marks-save-message" class="font-body-sm text-body-sm text-on-surface-variant"></div>
+          <div class="flex gap-3">
+            <button id="btn-save-marks" class="bg-surface-container-highest text-on-surface px-5 py-2.5 rounded font-label-md text-label-md border border-border-subtle hover:bg-surface-variant transition-colors active:scale-95">SAVE MARKS</button>
+            <button id="btn-submit-marks" class="bg-primary-container text-on-primary px-5 py-2.5 rounded font-label-md text-label-md hover:bg-surface-tint transition-colors active:scale-95">SUBMIT FOR APPROVAL</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEACHER EXAMS TAB -->
+    <div id="teacher-tab-exams" class="teacher-tab-panel hidden flex-col gap-4">
+      <div class="flex justify-between items-center">
+        <h2 class="font-headline-md text-headline-md text-primary">Examinations (your classes)</h2>
+        <button id="btn-teacher-open-add-exam" class="bg-primary-container text-on-primary px-4 py-2 rounded font-label-md text-label-md flex items-center gap-2 active:scale-95">
+          <span class="material-symbols-outlined text-[18px]">add</span> NEW EXAMINATION
+        </button>
+      </div>
+      <div id="teacher-exam-cards" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </div>
+  </main>
+</section>
+<div id="add-student-modal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+  <div class="bg-surface-container-lowest rounded-xl border border-border-subtle shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto">
+    <div class="p-6 border-b border-border-subtle flex justify-between items-center">
+      <h3 class="font-headline-md text-headline-md text-primary">Add Student</h3>
+      <button id="btn-close-add-student" class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">close</span></button>
+    </div>
+        <form id="add-student-form" class="p-6 space-y-4">
+      <input type="hidden" id="edit-student-id" value=""/>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Full Name</label>
+        <input id="new-student-name" required class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface" type="text"/>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Roll Number</label>
+        <input id="new-student-roll" required class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface font-data-mono" type="text"/>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Date of Birth</label>
+        <input id="new-student-dob" required class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface" type="date"/>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Academic Year</label>
+        <input id="new-student-year" required placeholder="e.g. 2026-2027" class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface" type="text"/>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Class</label>
+        <select id="new-student-class" required class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface"></select>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Your Subject(s) for this student</label>
+        <div id="new-student-subjects" class="space-y-1"></div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">You can only assign subjects you teach. Other subject teachers can add their own subjects for this student separately.</p>
+      </div>
+      <div id="add-student-error" class="hidden font-body-sm text-body-sm text-error-fail bg-error-container/40 border border-error-fail/30 rounded-lg px-4 py-3"></div>
+      <button id="add-student-submit" type="submit" class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-label-md text-label-md hover:bg-surface-tint transition-colors">SAVE STUDENT</button>
+    </form>
+  </div>
+</div>
+<div id="bulk-add-modal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+  <div class="bg-surface-container-lowest rounded-xl border border-border-subtle shadow-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+    <div class="p-6 border-b border-border-subtle flex justify-between items-center">
+      <h3 class="font-headline-md text-headline-md text-primary">Bulk Add Students</h3>
+      <button id="btn-close-bulk-add" class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <form id="bulk-add-form" class="p-6 space-y-4">
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Class</label>
+        <select id="bulk-add-class" required class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface"></select>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Your Subject(s) for these students</label>
+        <div id="bulk-add-subjects" class="space-y-1"></div>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Academic Year</label>
+        <input id="bulk-add-year" required placeholder="e.g. 2026-2027" class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface" type="text"/>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Paste students — one per line: <span class="font-data-mono">Name, Roll Number, DOB (YYYY-MM-DD)</span></label>
+        <textarea id="bulk-add-textarea" rows="8" required placeholder="Arun Kumar, VTC2026001, 2012-04-15
+Divya S, VTC2026002, 2012-07-22
+Karthik R, VTC2026003, 2011-11-03" class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface font-data-mono text-data-mono"></textarea>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Each line adds one student to the selected class with your ticked subjects. Duplicate roll numbers are skipped automatically.</p>
+      </div>
+      <div id="bulk-add-error" class="hidden font-body-sm text-body-sm text-error-fail bg-error-container/40 border border-error-fail/30 rounded-lg px-4 py-3"></div>
+      <div id="bulk-add-result" class="hidden font-body-sm text-body-sm text-success-pass bg-secondary-fixed/20 border border-success-pass/30 rounded-lg px-4 py-3"></div>
+      <button id="bulk-add-submit" type="submit" class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-label-md text-label-md hover:bg-surface-tint transition-colors">ADD ALL STUDENTS</button>
+    </form>
+  </div>
+</div>
+<section id="view-owner-dashboard" class="view flex-grow flex flex-col bg-management-surface">
+  <header class="bg-surface border-b border-border-subtle w-full h-16 flex items-center justify-between px-margin-mobile md:px-margin-desktop flex-shrink-0">
+    <div class="font-headline-md text-headline-md font-bold text-primary truncate">VISHNU TUITION CENTRE — OWNER</div>
+    <div class="flex items-center gap-4">
+      <span class="font-body-md text-body-md text-on-surface-variant hidden md:inline">Mr. Vishnu Aravind</span>
+      <button id="btn-owner-bell" class="relative text-on-surface-variant hover:text-primary">
+        <span class="material-symbols-outlined">notifications</span>
+        <span id="owner-bell-count" class="hidden absolute -top-1 -right-1 bg-error-fail text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">0</span>
+      </button>
+      <button id="btn-owner-logout" class="font-label-md text-label-md text-error-fail hover:underline flex items-center gap-1">
+        <span class="material-symbols-outlined text-[18px]">logout</span> Logout
+      </button>
+    </div>
+  </header>
+  <div id="owner-notif-dropdown" class="hidden absolute right-4 top-16 z-40 w-80 max-h-96 overflow-y-auto bg-surface-container-lowest border border-border-subtle rounded-lg shadow-lg"></div>
+
+  <div class="flex border-b border-border-subtle bg-surface px-margin-mobile md:px-margin-desktop overflow-x-auto">
+    <button class="owner-tab-btn px-4 py-3 font-label-md text-label-md border-b-2 border-primary text-primary whitespace-nowrap" data-tab="teachers">Teachers</button>
+    <button class="owner-tab-btn px-4 py-3 font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant whitespace-nowrap" data-tab="exams">Examinations</button>
+    <button class="owner-tab-btn px-4 py-3 font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant whitespace-nowrap" data-tab="approvals">Result Approval</button>
+    <button class="owner-tab-btn px-4 py-3 font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant whitespace-nowrap" data-tab="publish">Publication</button>
+    <button class="owner-tab-btn px-4 py-3 font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant whitespace-nowrap" data-tab="endexam">END EXAM RESULT</button>
+  </div>
+
+  <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col gap-6">
+
+    <!-- TEACHERS TAB -->
+    <div id="owner-tab-teachers" class="owner-tab-panel flex flex-col gap-4">
+      <div class="flex justify-between items-center">
+        <h2 class="font-headline-md text-headline-md text-primary">Teachers &amp; Assignments</h2>
+        <button id="btn-open-add-teacher" class="bg-primary-container text-on-primary px-4 py-2 rounded font-label-md text-label-md flex items-center gap-2 active:scale-95">
+          <span class="material-symbols-outlined text-[18px]">person_add</span> ADD TEACHER
+        </button>
+      </div>
+      <div id="teacher-cards" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </div>
+
+    <!-- EXAMS TAB -->
+    <div id="owner-tab-exams" class="owner-tab-panel hidden flex-col gap-4">
+      <div class="flex justify-between items-center">
+        <h2 class="font-headline-md text-headline-md text-primary">Examinations</h2>
+        <button id="btn-open-add-exam" class="bg-primary-container text-on-primary px-4 py-2 rounded font-label-md text-label-md flex items-center gap-2 active:scale-95">
+          <span class="material-symbols-outlined text-[18px]">add</span> NEW EXAMINATION
+        </button>
+      </div>
+      <div id="exam-cards" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </div>
+
+    <!-- APPROVALS TAB -->
+    <div id="owner-tab-approvals" class="owner-tab-panel hidden flex-col gap-4">
+      <h2 class="font-headline-md text-headline-md text-primary">Marks Pending Approval</h2>
+      <div class="bg-surface-container-lowest border border-border-subtle rounded overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse min-w-[750px]">
+            <thead class="bg-primary-container text-on-primary font-label-sm text-label-sm uppercase">
+              <tr>
+                <th class="py-3 px-4">Student</th>
+                <th class="py-3 px-4">Class</th>
+                <th class="py-3 px-4">Subject</th>
+                <th class="py-3 px-4">Examination</th>
+                <th class="py-3 px-4 text-center">Marks</th>
+                <th class="py-3 px-4 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="approvals-body" class="divide-y divide-border-subtle text-body-sm font-body-sm"></tbody>
+          </table>
+        </div>
+        <div id="approvals-empty" class="hidden p-8 text-center font-body-sm text-body-sm text-on-surface-variant">No marks pending approval right now.</div>
+      </div>
+    </div>
+
+    <!-- PUBLISH TAB -->
+    <div id="owner-tab-publish" class="owner-tab-panel hidden flex-col gap-4">
+      <h2 class="font-headline-md text-headline-md text-primary">Publication Schedule</h2>
+      <div id="publish-cards" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </div>
+
+    <!-- END EXAM RESULT TAB -->
+    <div id="owner-tab-endexam" class="owner-tab-panel hidden flex-col gap-4">
+      <div class="max-w-lg bg-surface-container-lowest border border-border-subtle rounded-xl p-8 text-center mx-auto">
+        <span id="endexam-icon" class="material-symbols-outlined text-[48px] mb-4 block">lock_open</span>
+        <h2 class="font-headline-md text-headline-md text-primary mb-2">END EXAM RESULT</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-6">When active, staff login is disabled for everyone except you. Published student results remain accessible unless you also unpublish them.</p>
+        <p id="endexam-status" class="font-label-md text-label-md mb-6 uppercase"></p>
+        <button id="btn-toggle-endexam" class="px-6 py-3 rounded-lg font-label-md text-label-md active:scale-95"></button>
+      </div>
+
+      <div class="max-w-lg bg-surface-container-lowest border border-border-subtle rounded-xl p-8 text-center mx-auto">
+        <span id="hidelogin-icon" class="material-symbols-outlined text-[48px] mb-4 block">visibility</span>
+        <h2 class="font-headline-md text-headline-md text-primary mb-2">HIDE STAFF LOGIN</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-6">Temporarily hide staff login from students on the main page, and lock everyone — including you — out of the Teacher and Owner panels for the chosen duration. Access returns automatically once the timer ends. There is no early cancel, so double-check the duration before confirming.</p>
+        <p id="hidelogin-status" class="font-label-md text-label-md mb-6 uppercase"></p>
+        <div id="hidelogin-duration-picker" class="flex flex-wrap gap-2 justify-center mb-4">
+          <button type="button" class="hidelogin-duration-btn px-4 py-2 rounded-lg border border-border-subtle font-label-md text-label-md" data-minutes="30">30 min</button>
+          <button type="button" class="hidelogin-duration-btn px-4 py-2 rounded-lg border border-border-subtle font-label-md text-label-md" data-minutes="60">1 hour</button>
+          <button type="button" class="hidelogin-duration-btn px-4 py-2 rounded-lg border border-border-subtle font-label-md text-label-md" data-minutes="180">3 hours</button>
+          <button type="button" class="hidelogin-duration-btn px-4 py-2 rounded-lg border border-border-subtle font-label-md text-label-md" data-minutes="1440">1 day</button>
+        </div>
+        <div class="flex items-center gap-2 justify-center mb-4">
+          <input id="hidelogin-custom-minutes" type="number" min="1" placeholder="Custom minutes" class="w-36 px-3 py-2 border border-border-subtle rounded-lg bg-surface text-body-sm font-body-sm"/>
+          <button id="btn-hidelogin-custom" type="button" class="px-4 py-2 rounded-lg border border-border-subtle font-label-md text-label-md">Set</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+<!-- Add Teacher Modal -->
+<div id="add-teacher-modal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+  <div class="bg-surface-container-lowest rounded-xl border border-border-subtle shadow-lg w-full max-w-md">
+    <div class="p-6 border-b border-border-subtle flex justify-between items-center">
+      <h3 class="font-headline-md text-headline-md text-primary">Add Teacher</h3>
+      <button id="btn-close-add-teacher" class="text-on-surface-variant"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <form id="add-teacher-form" class="p-6 space-y-4">
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Full Name</label>
+        <input id="new-teacher-name" required placeholder="e.g. Ms. Priya Ravi" class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface" type="text"/>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Login Email (internal, not shown to teacher)</label>
+        <input id="new-teacher-email" required placeholder="e.g. priyaravi@vishnu.internal" class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface font-data-mono" type="text"/>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Temporary Password</label>
+        <input id="new-teacher-password" required minlength="6" class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface" type="text"/>
+      </div>
+      <div id="add-teacher-error" class="hidden font-body-sm text-body-sm text-error-fail bg-error-container/40 border border-error-fail/30 rounded-lg px-4 py-3"></div>
+      <div id="add-teacher-note" class="hidden font-body-sm text-body-sm text-warning-pending bg-warning-pending/10 border border-warning-pending/30 rounded-lg px-4 py-3"></div>
+      <button id="add-teacher-submit" type="submit" class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-label-md text-label-md">CREATE LOGIN</button>
+    </form>
+  </div>
+</div>
+<!-- Assign Subject/Class Modal -->
+<div id="assign-modal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+  <div class="bg-surface-container-lowest rounded-xl border border-border-subtle shadow-lg w-full max-w-md">
+    <div class="p-6 border-b border-border-subtle flex justify-between items-center">
+      <h3 class="font-headline-md text-headline-md text-primary">Assign Subject &amp; Class</h3>
+      <button id="btn-close-assign" class="text-on-surface-variant"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <form id="assign-form" class="p-6 space-y-4">
+      <input type="hidden" id="assign-teacher-id"/>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Class</label>
+        <select id="assign-class-select" required class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface"></select>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Subject</label>
+        <select id="assign-subject-select" required class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface"></select>
+      </div>
+      <div id="assign-error" class="hidden font-body-sm text-body-sm text-error-fail bg-error-container/40 border border-error-fail/30 rounded-lg px-4 py-3"></div>
+      <button type="submit" class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-label-md text-label-md">ADD ASSIGNMENT</button>
+    </form>
+  </div>
+</div>
+<!-- Add Examination Modal -->
+<div id="add-exam-modal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+  <div class="bg-surface-container-lowest rounded-xl border border-border-subtle shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto">
+    <div class="p-6 border-b border-border-subtle flex justify-between items-center">
+      <h3 class="font-headline-md text-headline-md text-primary">New Examination</h3>
+      <button id="btn-close-add-exam" class="text-on-surface-variant"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <form id="add-exam-form" class="p-6 space-y-4">
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Examination Name</label>
+        <input id="new-exam-name" required placeholder="e.g. Half Yearly Exam" class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface" type="text"/>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Academic Year</label>
+        <input id="new-exam-year" required placeholder="e.g. 2026-2027" class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface" type="text"/>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Class</label>
+        <select id="new-exam-class" required class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface"></select>
+      </div>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Subjects for this exam (set max/pass marks)</label>
+        <div id="new-exam-subjects" class="space-y-2"></div>
+      </div>
+      <div id="add-exam-error" class="hidden font-body-sm text-body-sm text-error-fail bg-error-container/40 border border-error-fail/30 rounded-lg px-4 py-3"></div>
+      <button type="submit" class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-label-md text-label-md">CREATE EXAMINATION</button>
+    </form>
+  </div>
+</div>
+<!-- Schedule Publish Modal -->
+<div id="schedule-publish-modal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+  <div class="bg-surface-container-lowest rounded-xl border border-border-subtle shadow-lg w-full max-w-md">
+    <div class="p-6 border-b border-border-subtle flex justify-between items-center">
+      <h3 class="font-headline-md text-headline-md text-primary">Schedule Publication</h3>
+      <button id="btn-close-schedule" class="text-on-surface-variant"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <form id="schedule-publish-form" class="p-6 space-y-4">
+      <input type="hidden" id="schedule-exam-id"/>
+      <div>
+        <label class="block font-label-md text-label-md mb-1">Publish Date &amp; Time</label>
+        <input id="schedule-datetime" required class="w-full border border-border-subtle rounded-lg py-2.5 px-3 bg-surface" type="datetime-local"/>
+      </div>
+      <button type="submit" class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-label-md text-label-md">SET SCHEDULE</button>
+    </form>
+  </div>
+</div>
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+  const SUPABASE_URL = 'https://qeqpfnijcbqdipoesgqa.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_HK1-UOtqcuELAfZ1N8gSXA_6mG_Ngl5';
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+function showToast(message, isError) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `px-5 py-3 rounded-lg shadow-lg font-label-md text-label-md flex items-center gap-2 ${isError ? 'bg-error-fail text-white' : 'bg-success-pass text-white'}`;
+    toast.innerHTML = `<span class="material-symbols-outlined text-[18px]">${isError ? 'error' : 'check_circle'}</span> ${message}`;
+    container.appendChild(toast);
+    setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity .3s'; setTimeout(() => toast.remove(), 300); }, 2200);
+  }
+
+
+  // ---- view router ----
+  // This page (staff.html) is the ENTIRE protected staff experience --
+  // it contains no student-facing markup at all. The login form is the
+  // default and only entry view; the Teacher/Owner dashboard <section>s
+  // are detached from the document further below and only re-attached
+  // after a real successful Supabase login + role check.
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-staff-login').classList.add('active');
+
+  function showView(id) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+  // "Back to result search" now leaves this protected page entirely and
+  // goes to the public student site, since there is no search view here.
+  document.querySelectorAll('.btn-back-to-search').forEach(b => b.addEventListener('click', () => { window.location.href = 'index.html'; }));
+
+  // Returns true while the owner's timed "hide staff login" window is
+  // active. During this window NOBODY -- student, teacher, or owner --
+  // can reach or use the staff panels. Access returns automatically once
+  // the timer passes; there is no early-exit from inside the app.
+  async function isEverythingLocked() {
+    const { data: settings } = await supabase.from('system_settings').select('hide_staff_login_until').eq('id', 1).single();
+    const until = settings?.hide_staff_login_until ? new Date(settings.hide_staff_login_until) : null;
+    return !!(until && until.getTime() > Date.now());
+  }
+
+  async function refreshStaffLoginOptions() {
+    const select = document.getElementById('staff-select');
+    const notice = document.getElementById('staff-login-endexam-notice');
+
+    const { data: settings } = await supabase.from('system_settings').select('end_exam_result_active').eq('id', 1).single();
+    const active = settings?.end_exam_result_active || false;
+
+    const { data: people, error } = await supabase
+  .from('profiles')
+  .select('full_name, email, role, active')
+  .eq('active', true)
+  .in('role', ['teacher', 'owner'])
+  .not('email', 'is', null)
+  .order('full_name');
+
+    
+
+if (error) {
+  console.error('STAFF PROFILE LOAD ERROR:', error);
+  select.innerHTML = '<option disabled selected>Error loading staff</option>';
+  return;
+}
+
+console.log('STAFF PEOPLE:', people);
+
+    select.innerHTML = '<option disabled selected value="">Select authorized personnel</option>' +
+      (people || []).map(p => `<option value="${p.email}" data-role="${p.role}">${p.full_name}${p.role === 'owner' ? ' (Owner)' : ''}</option>`).join('');
+
+    if (notice) notice.classList.toggle('hidden', !active);
+  }
+
+  // On load: if a valid staff session already exists in this browser,
+  // route straight in. Otherwise show the login form -- locking it if
+  // the owner's timed lock is currently active.
+  (async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+      await routeAfterLogin();
+      return;
+    }
+    if (await isEverythingLocked()) {
+      showStaffError('Staff access is temporarily unavailable. Please try again later.');
+      document.getElementById('staff-login-form').querySelectorAll('input, button, select').forEach(el => el.disabled = true);
+      return;
+    }
+    await refreshStaffLoginOptions();
+  })();
+
+  // ---- staff login ----
+  const staffForm = document.getElementById('staff-login-form');
+  const staffError = document.getElementById('staff-login-error');
+  const staffSubmitBtn = document.getElementById('staff-login-submit');
+  const staffSubmitText = document.getElementById('staff-login-submit-text');
+
+  document.getElementById('toggle-staff-password').addEventListener('click', () => {
+    const input = document.getElementById('staff-password');
+    const icon = document.getElementById('staff-visibility-icon');
+    if (input.type === 'password') { input.type = 'text'; icon.textContent = 'visibility_off'; }
+    else { input.type = 'password'; icon.textContent = 'visibility'; }
+  });
+
+  function setStaffLoading(loading) {
+    staffSubmitBtn.disabled = loading;
+    staffSubmitText.textContent = loading ? 'Signing in...' : 'AUTHORIZE LOGIN';
+  }
+  function showStaffError(msg) {
+    staffError.textContent = msg;
+    staffError.classList.remove('hidden');
+  }
+  function hideStaffError() {
+    staffError.classList.add('hidden');
+  }
+
+  staffForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideStaffError();
+    const email = document.getElementById('staff-select').value;
+    const password = document.getElementById('staff-password').value;
+    if (!email || !password) return;
+
+    setStaffLoading(true);
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    setStaffLoading(false);
+
+    if (error) {
+      showStaffError('Incorrect password, or this account is not set up correctly. Please try again.');
+      return;
+    }
+
+    await routeAfterLogin();
+  });
+
+async function routeAfterLogin() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) { showView('view-staff-login'); return; }
+
+    const { data: profile, error: profileError } = await supabase
+      .from('profiles')
+      .select('full_name, role, active')
+      .eq('id', user.id)
+      .single();
+
+    if (profileError || !profile || !profile.active) {
+      await supabase.auth.signOut();
+      showStaffError('This account is not authorized to access the portal. Please contact the owner.');
+      showView('view-staff-login');
+      return;
+    }
+
+    // Hard lock: while the owner's "hide staff login" timer is running,
+    // NOBODY gets into any panel — owner included. This is checked before
+    // the owner/teacher branch so there is no exception for either role.
+    if (await isEverythingLocked()) {
+      await supabase.auth.signOut();
+      showStaffError('Staff access is temporarily unavailable. Please try again later.');
+      showView('view-staff-login');
+      return;
+    }
+
+    if (profile.role === 'owner') {
+      mountStaffPortal('owner');
+      await loadOwnerPortal();
+      showView('view-owner-dashboard');
+      startLockWatchdog();
+    } else {
+      const { data: settings } = await supabase.from('system_settings').select('end_exam_result_active').eq('id', 1).single();
+      if (settings?.end_exam_result_active) {
+        await supabase.auth.signOut();
+        showStaffError('Staff access is temporarily disabled by the owner. Please contact Mr. Vishnu Aravind.');
+        showView('view-staff-login');
+        return;
+      }
+      mountStaffPortal('teacher');
+      await loadTeacherPortal(user.id, profile.full_name);
+      showView('view-teacher-dashboard');
+      startLockWatchdog();
+    }
+  }
+
+  document.getElementById('btn-teacher-logout').addEventListener('click', async () => {
+    await supabase.auth.signOut();
+    resetTeacherState();
+    unmountStaffPortal();
+    showView('view-search');
+  });
+  // Lets a teacher hand off to the owner without going all the way back to
+  // the result page first: signs the teacher out, then reopens the same
+  // staff login form so the owner can sign in from there.
+  document.getElementById('btn-teacher-owner-login').addEventListener('click', async () => {
+    await supabase.auth.signOut();
+    resetTeacherState();
+    unmountStaffPortal();
+    await refreshStaffLoginOptions();
+    showView('view-staff-login');
+  });
+  document.getElementById('btn-owner-logout').addEventListener('click', async () => {
+    await supabase.auth.signOut();
+    unmountStaffPortal();
+    showView('view-search');
+  });
+
+  // ---- Teacher Portal state ----
+  let teacherAssignments = []; // [{class_id, subject_id, class_name, subject_name}]
+  let currentTeacherId = null;
+
+  function resetTeacherState() {
+    teacherAssignments = [];
+    currentTeacherId = null;
+  }
+
+  async function loadTeacherPortal(userId, fullName) {
+    currentTeacherId = userId;
+    document.getElementById('teacher-name-display').textContent = fullName;
+
+    const { data: assignments } = await supabase
+      .from('teacher_assignments')
+      .select('class_id, subject_id, classes(display_name), subjects(name)')
+      .eq('teacher_id', userId);
+
+    teacherAssignments = (assignments || []).map(a => ({
+      class_id: a.class_id,
+      subject_id: a.subject_id,
+      class_name: a.classes?.display_name,
+      subject_name: a.subjects?.name
+    }));
+
+    await loadStudentList();
+    setupMarksClassSubjectFilters();
+    await loadExamsForMarks();
+    await loadTeacherExamCards();
+    await loadNotifications('teacher');
+  }
+
+  // ---- tabs ----
+  document.querySelectorAll('.teacher-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.teacher-tab-btn').forEach(b => b.classList.remove('border-primary', 'text-primary'));
+      document.querySelectorAll('.teacher-tab-btn').forEach(b => b.classList.add('border-transparent', 'text-on-surface-variant'));
+      btn.classList.add('border-primary', 'text-primary');
+      btn.classList.remove('border-transparent', 'text-on-surface-variant');
+      document.querySelectorAll('.teacher-tab-panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById('teacher-tab-' + btn.dataset.tab).classList.remove('hidden');
+      document.getElementById('teacher-tab-' + btn.dataset.tab).classList.add('flex');
+      if (btn.dataset.tab === 'exams') loadTeacherExamCards();
+    });
+  });
+
+  // ---- student list ----
+  async function loadStudentList() {
+    const classIds = [...new Set(teacherAssignments.map(a => a.class_id))];
+    const tbody = document.getElementById('student-list-body');
+    const emptyMsg = document.getElementById('student-list-empty');
+    tbody.innerHTML = '';
+
+    if (classIds.length === 0) {
+      emptyMsg.classList.remove('hidden');
+      return;
+    }
+
+    const { data: students, error } = await supabase
+      .from('students')
+      .select('id, roll_number, full_name, class_id, classes(display_name), student_subjects(subject_id, subjects(name))')
+      .in('class_id', classIds)
+      .order('full_name');
+
+    if (error || !students || students.length === 0) {
+      emptyMsg.classList.remove('hidden');
+      return;
+    }
+    emptyMsg.classList.add('hidden');
+
+    const mySubjectIds = new Set(teacherAssignments.map(a => a.subject_id));
+
+    students.forEach(s => {
+      const mySubjects = (s.student_subjects || [])
+        .filter(ss => mySubjectIds.has(ss.subject_id))
+        .map(ss => ss.subjects?.name)
+        .filter(Boolean);
+
+      const tr = document.createElement('tr');
+      tr.className = 'hover:bg-surface-alt transition-colors';
+      tr.innerHTML = `
+        <td class="py-3 px-4 font-data-mono text-data-mono text-primary-container">${s.roll_number}</td>
+        <td class="py-3 px-4 font-medium">${s.full_name}</td>
+        <td class="py-3 px-4">${s.classes?.display_name || ''}</td>
+        <td class="py-3 px-4">
+          <div class="flex flex-wrap gap-1">
+            ${mySubjects.length ? mySubjects.map(sub => `<span class="px-2 py-1 bg-surface-alt border border-secondary-fixed text-on-secondary-container rounded-sm text-xs">${sub}</span>`).join('') : '<span class="text-on-surface-variant text-xs">None of your subjects yet</span>'}
+          </div>
+        </td>
+        <td class="py-3 px-4 text-right">
+          <button class="btn-edit-student text-primary hover:underline text-xs mr-3" data-id="${s.id}">Edit</button>
+          <button class="btn-delete-student text-error-fail hover:underline text-xs" data-id="${s.id}">Delete</button>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+
+    tbody.querySelectorAll('.btn-delete-student').forEach(b => b.addEventListener('click', async () => {
+      if (!confirm('Delete this student? This also removes their marks and subject records.')) return;
+      await supabase.from('students').delete().eq('id', b.dataset.id);
+      await loadStudentList();
+    }));
+    tbody.querySelectorAll('.btn-edit-student').forEach(b => b.addEventListener('click', () => openEditStudentModal(b.dataset.id)));
+
+    // simple client-side search filter
+    document.getElementById('student-search-input').oninput = (e) => {
+      const q = e.target.value.toLowerCase();
+      [...tbody.children].forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    };
+  }
+
+  // ---- add student modal ----
+  const addStudentModal = document.getElementById('add-student-modal');
+  document.getElementById('btn-open-add-student').addEventListener('click', () => {
+    populateAddStudentForm();
+    addStudentModal.classList.remove('hidden');
+  });
+  document.getElementById('btn-close-add-student').addEventListener('click', () => addStudentModal.classList.add('hidden'));
+
+  function populateAddStudentForm() {
+    document.getElementById('edit-student-id').value = '';
+    document.getElementById('add-student-submit').textContent = 'SAVE STUDENT';
+    const classSelect = document.getElementById('new-student-class');
+    const uniqueClasses = [...new Map(teacherAssignments.map(a => [a.class_id, a.class_name])).entries()];
+    classSelect.innerHTML = uniqueClasses.map(([id, name]) => `<option value="${id}">${name}</option>`).join('');
+    renderSubjectCheckboxesForClass(classSelect.value);
+    classSelect.onchange = () => renderSubjectCheckboxesForClass(classSelect.value);
+    document.getElementById('add-student-form').reset();
+    document.getElementById('add-student-error').classList.add('hidden');
+  }
+
+  async function openEditStudentModal(studentId) {
+    const { data: student } = await supabase.from('students').select('*, student_subjects(subject_id)').eq('id', studentId).single();
+    if (!student) return;
+    populateAddStudentForm();
+    document.getElementById('edit-student-id').value = studentId;
+    document.getElementById('add-student-submit').textContent = 'UPDATE STUDENT';
+    document.getElementById('new-student-name').value = student.full_name;
+    document.getElementById('new-student-roll').value = student.roll_number;
+    document.getElementById('new-student-dob').value = student.date_of_birth;
+    document.getElementById('new-student-year').value = student.academic_year;
+    document.getElementById('new-student-class').value = student.class_id;
+    renderSubjectCheckboxesForClass(student.class_id);
+    const mySubjectIds = new Set((student.student_subjects || []).map(ss => String(ss.subject_id)));
+    document.querySelectorAll('#new-student-subjects input').forEach(cb => { cb.checked = mySubjectIds.has(cb.value); });
+    addStudentModal.classList.remove('hidden');
+  }
+
+  function renderSubjectCheckboxesForClass(classId) {
+    const container = document.getElementById('new-student-subjects');
+    const subjectsForClass = teacherAssignments.filter(a => String(a.class_id) === String(classId));
+    container.innerHTML = subjectsForClass.map(a => `
+      <label class="flex items-center gap-2 text-body-sm font-body-sm cursor-pointer">
+        <input type="checkbox" class="rounded border-border-subtle text-primary-container" value="${a.subject_id}" checked/> ${a.subject_name}
+      </label>`).join('') || '<p class="text-body-sm text-on-surface-variant">No subjects available for this class.</p>';
+  }
+
+  document.getElementById('add-student-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errBox = document.getElementById('add-student-error');
+    errBox.classList.add('hidden');
+
+    if (await isEverythingLocked()) {
+      showToast('Staff access is temporarily locked. Please try again later.', true);
+      return;
+    }
+
+    const editId = document.getElementById('edit-student-id').value;
+    const name = document.getElementById('new-student-name').value.trim();
+    const roll = document.getElementById('new-student-roll').value.trim();
+    const dob = document.getElementById('new-student-dob').value;
+    const year = document.getElementById('new-student-year').value.trim();
+    const classId = document.getElementById('new-student-class').value;
+    const subjectIds = [...document.querySelectorAll('#new-student-subjects input:checked')].map(cb => cb.value);
+
+    if (editId) {
+      const { error: updateError } = await supabase.from('students')
+        .update({ full_name: name, roll_number: roll, date_of_birth: dob, academic_year: year, class_id: classId })
+        .eq('id', editId);
+      if (updateError) {
+        errBox.textContent = 'Could not update student: ' + updateError.message;
+        errBox.classList.remove('hidden');
+        return;
+      }
+      // replace only this teacher's subject rows for this student
+      const mySubjectIds = teacherAssignments.map(a => a.subject_id);
+      await supabase.from('student_subjects').delete().eq('student_id', editId).in('subject_id', mySubjectIds);
+      if (subjectIds.length > 0) {
+        await supabase.from('student_subjects').insert(subjectIds.map(sid => ({ student_id: editId, subject_id: sid })));
+      }
+      addStudentModal.classList.add('hidden');
+      await loadStudentList();
+      return;
+    }
+
+    const { data: inserted, error: insertError } = await supabase
+      .from('students')
+      .insert({ full_name: name, roll_number: roll, date_of_birth: dob, academic_year: year, class_id: classId, created_by: currentTeacherId })
+      .select()
+      .single();
+
+    if (insertError) {
+      errBox.textContent = insertError.message.includes('duplicate') ? 'A student with this roll number already exists.' : 'Could not save student: ' + insertError.message;
+      errBox.classList.remove('hidden');
+      return;
+    }
+
+    if (subjectIds.length > 0) {
+      const rows = subjectIds.map(sid => ({ student_id: inserted.id, subject_id: sid }));
+      await supabase.from('student_subjects').insert(rows);
+    }
+
+    addStudentModal.classList.add('hidden');
+    await loadStudentList();
+  });
+
+  // ---- bulk add students ----
+  const bulkAddModal = document.getElementById('bulk-add-modal');
+  document.getElementById('btn-open-bulk-add').addEventListener('click', () => {
+    const classSelect = document.getElementById('bulk-add-class');
+    const uniqueClasses = [...new Map(teacherAssignments.map(a => [a.class_id, a.class_name])).entries()];
+    classSelect.innerHTML = uniqueClasses.map(([id, name]) => `<option value="${id}">${name}</option>`).join('');
+
+    function renderBulkSubjects() {
+      const subs = teacherAssignments.filter(a => String(a.class_id) === String(classSelect.value));
+      document.getElementById('bulk-add-subjects').innerHTML = subs.map(a => `
+        <label class="flex items-center gap-2 text-body-sm font-body-sm cursor-pointer">
+          <input type="checkbox" class="bulk-subject-check rounded" value="${a.subject_id}" checked/> ${a.subject_name}
+        </label>`).join('');
+    }
+    classSelect.onchange = renderBulkSubjects;
+    renderBulkSubjects();
+
+    document.getElementById('bulk-add-form').reset();
+    document.getElementById('bulk-add-error').classList.add('hidden');
+    document.getElementById('bulk-add-result').classList.add('hidden');
+    bulkAddModal.classList.remove('hidden');
+  });
+  document.getElementById('btn-close-bulk-add').addEventListener('click', () => bulkAddModal.classList.add('hidden'));
+
+  document.getElementById('bulk-add-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errBox = document.getElementById('bulk-add-error');
+    const resultBox = document.getElementById('bulk-add-result');
+    errBox.classList.add('hidden');
+    resultBox.classList.add('hidden');
+
+    const classId = document.getElementById('bulk-add-class').value;
+    const year = document.getElementById('bulk-add-year').value.trim();
+    const subjectIds = [...document.querySelectorAll('.bulk-subject-check:checked')].map(cb => cb.value);
+    const lines = document.getElementById('bulk-add-textarea').value.split('\n').map(l => l.trim()).filter(Boolean);
+
+    if (lines.length === 0) { errBox.textContent = 'Please paste at least one student.'; errBox.classList.remove('hidden'); return; }
+
+    let added = 0, skipped = 0, malformed = 0;
+    for (const line of lines) {
+      const parts = line.split(',').map(p => p.trim());
+      if (parts.length < 3) { malformed++; continue; }
+      const [name, roll, dob] = parts;
+      if (!name || !roll || !dob) { malformed++; continue; }
+
+      const { data: inserted, error } = await supabase
+        .from('students')
+        .insert({ full_name: name, roll_number: roll, date_of_birth: dob, academic_year: year, class_id: classId, created_by: currentTeacherId })
+        .select()
+        .single();
+
+      if (error) { skipped++; continue; }
+      added++;
+      if (subjectIds.length > 0) {
+        await supabase.from('student_subjects').insert(subjectIds.map(sid => ({ student_id: inserted.id, subject_id: sid })));
+      }
+    }
+
+    resultBox.textContent = `Added ${added} student(s).` + (skipped ? ` Skipped ${skipped} (likely duplicate roll numbers).` : '') + (malformed ? ` ${malformed} line(s) were malformed and skipped.` : '');
+    resultBox.classList.remove('hidden');
+    await loadStudentList();
+  });
+
+  // ---- marks entry ----
+  function setupMarksClassSubjectFilters() {
+    const classSelect = document.getElementById('marks-class-select');
+    const subjectSelect = document.getElementById('marks-subject-select');
+    const uniqueClasses = [...new Map(teacherAssignments.map(a => [a.class_id, a.class_name])).entries()];
+    classSelect.innerHTML = uniqueClasses.map(([id, name]) => `<option value="${id}">${name}</option>`).join('');
+
+    function refreshSubjects() {
+      const subs = teacherAssignments.filter(a => String(a.class_id) === String(classSelect.value));
+      subjectSelect.innerHTML = subs.map(a => `<option value="${a.subject_id}">${a.subject_name}</option>`).join('');
+    }
+    classSelect.onchange = () => { refreshSubjects(); loadMarksEntryTable(); };
+    subjectSelect.onchange = loadMarksEntryTable;
+    refreshSubjects();
+  }
+
+  async function loadExamsForMarks() {
+    const classIds = [...new Set(teacherAssignments.map(a => a.class_id))];
+    const examSelect = document.getElementById('marks-exam-select');
+    const noExams = document.getElementById('marks-no-exams');
+    const entryArea = document.getElementById('marks-entry-area');
+
+    if (classIds.length === 0) { noExams.classList.remove('hidden'); return; }
+
+    const { data: exams } = await supabase
+      .from('examinations')
+      .select('id, name, academic_year, class_id')
+      .in('class_id', classIds)
+      .order('created_at', { ascending: false });
+
+    if (!exams || exams.length === 0) {
+      noExams.classList.remove('hidden');
+      entryArea.classList.add('hidden');
+      return;
+    }
+    noExams.classList.add('hidden');
+    examSelect.innerHTML = exams.map(e => `<option value="${e.id}" data-class="${e.class_id}">${e.name} (${e.academic_year})</option>`).join('');
+    examSelect.onchange = loadMarksEntryTable;
+    await loadMarksEntryTable();
+  }
+
+  async function loadMarksEntryTable() {
+    const examSelect = document.getElementById('marks-exam-select');
+    const subjectSelect = document.getElementById('marks-subject-select');
+    const entryArea = document.getElementById('marks-entry-area');
+    const tbody = document.getElementById('marks-entry-body');
+    const saveMsg = document.getElementById('marks-save-message');
+    saveMsg.textContent = '';
+
+    const examId = examSelect.value;
+    const classId = document.getElementById('marks-class-select').value;
+    const subjectId = subjectSelect.value;
+    if (!examId || !classId || !subjectId) { entryArea.classList.add('hidden'); return; }
+
+    const { data: examSubject } = await supabase
+      .from('exam_subjects')
+      .select('max_marks, pass_marks')
+      .eq('examination_id', examId)
+      .eq('subject_id', subjectId)
+      .maybeSingle();
+
+    if (!examSubject) {
+      entryArea.classList.add('hidden');
+      saveMsg.textContent = 'This subject has not been configured for this examination yet — ask the owner to set max/pass marks.';
+      return;
+    }
+
+    const { data: students } = await supabase
+      .from('students')
+      .select('id, roll_number, full_name, student_subjects!inner(subject_id)')
+      .eq('class_id', classId)
+      .eq('student_subjects.subject_id', subjectId)
+      .order('full_name');
+
+    const { data: existingMarks } = await supabase
+      .from('marks')
+      .select('student_id, obtained_marks, status, rejection_reason')
+      .eq('examination_id', examId)
+      .eq('subject_id', subjectId);
+    const marksByStudent = Object.fromEntries((existingMarks || []).map(m => [m.student_id, m]));
+
+    tbody.innerHTML = '';
+    (students || []).forEach(s => {
+      const existing = marksByStudent[s.id];
+      const status = existing?.status || 'DRAFT';
+      const locked = status === 'PENDING_APPROVAL' || status === 'APPROVED';
+      const isExempt = status === 'EXEMPT';
+      const tr = document.createElement('tr');
+      tr.dataset.studentId = s.id;
+      tr.innerHTML = `
+        <td class="py-2 px-4 font-data-mono text-data-mono text-primary-container">${s.roll_number}</td>
+        <td class="py-2 px-4">${s.full_name}</td>
+        <td class="py-2 px-4 text-center text-on-surface-variant">${examSubject.max_marks}</td>
+        <td class="py-2 px-4 text-center">
+          <input type="number" min="0" max="${examSubject.max_marks}" class="marks-input w-24 text-center border border-border-subtle rounded py-1.5 px-2" value="${existing && !isExempt ? existing.obtained_marks : ''}" ${locked || isExempt ? 'disabled' : ''}/>
+        </td>
+        <td class="py-2 px-4 text-center">
+          <input type="checkbox" class="not-appearing-check rounded" ${isExempt ? 'checked' : ''} ${locked ? 'disabled' : ''}/>
+        </td>
+        <td class="py-2 px-4 text-center">
+          <span class="px-2 py-1 rounded text-xs font-bold uppercase ${statusBadgeClass(status)}">${status.replace('_',' ')}</span>
+          ${status === 'REJECTED' && existing?.rejection_reason ? `<div class="text-xs text-error-fail mt-1">${existing.rejection_reason}</div>` : ''}
+        </td>`;
+      tbody.appendChild(tr);
+
+      const checkbox = tr.querySelector('.not-appearing-check');
+      const input = tr.querySelector('.marks-input');
+      checkbox.addEventListener('change', () => {
+        input.disabled = checkbox.checked;
+        if (checkbox.checked) input.value = '';
+      });
+    });
+    entryArea.classList.remove('hidden');
+  }
+
+  function statusBadgeClass(status) {
+    switch (status) {
+      case 'APPROVED': return 'bg-secondary-fixed text-on-secondary-fixed';
+      case 'PENDING_APPROVAL': return 'bg-warning-pending/20 text-warning-pending';
+      case 'REJECTED': return 'bg-error-container text-error-fail';
+      case 'EXEMPT': return 'bg-surface-variant text-on-surface-variant';
+      default: return 'bg-surface-container-highest text-on-surface-variant';
+    }
+  }
+
+  async function saveMarks(newStatus) {
+    const examId = document.getElementById('marks-exam-select').value;
+    const subjectId = document.getElementById('marks-subject-select').value;
+    const saveMsg = document.getElementById('marks-save-message');
+    const rows = [...document.querySelectorAll('#marks-entry-body tr')];
+
+    let errorCount = 0;
+    for (const row of rows) {
+      const input = row.querySelector('.marks-input');
+      const exemptCheck = row.querySelector('.not-appearing-check');
+      if (exemptCheck.disabled && !exemptCheck.checked) continue; // locked row, nothing to change
+      const studentId = row.dataset.studentId;
+
+      if (exemptCheck.checked) {
+        const { error } = await supabase.from('marks').upsert({
+          examination_id: examId, student_id: studentId, subject_id: subjectId,
+          obtained_marks: 0, status: 'EXEMPT', entered_by: currentTeacherId
+        }, { onConflict: 'examination_id,student_id,subject_id' });
+        if (error) errorCount++;
+        continue;
+      }
+
+      if (input.disabled || input.value === '') continue;
+      const { error } = await supabase.from('marks').upsert({
+        examination_id: examId,
+        student_id: studentId,
+        subject_id: subjectId,
+        obtained_marks: Number(input.value),
+        status: newStatus,
+        entered_by: currentTeacherId
+      }, { onConflict: 'examination_id,student_id,subject_id' });
+      if (error) errorCount++;
+    }
+
+    saveMsg.textContent = errorCount > 0
+      ? `Saved with ${errorCount} error(s) — check marks don't exceed max marks.`
+      : (newStatus === 'DRAFT' ? 'Marks saved as draft.' : 'Marks submitted for approval.');
+
+    if (errorCount > 0) {
+      showToast('Some marks could not be saved — check values.', true);
+    } else {
+      showToast(newStatus === 'DRAFT' ? 'Marks saved!' : 'Submitted for approval!');
+    }
+
+    if (newStatus === 'PENDING_APPROVAL' && errorCount === 0) {
+      const subjectName = document.getElementById('marks-subject-select').selectedOptions[0]?.textContent;
+      const examName = document.getElementById('marks-exam-select').selectedOptions[0]?.textContent;
+      await notify(await getOwnerId(), `Marks submitted for approval: ${subjectName} — ${examName}`);
+    }
+    await loadMarksEntryTable();
+  }
+
+  document.getElementById('btn-save-marks').addEventListener('click', () => saveMarks('DRAFT'));
+  document.getElementById('btn-submit-marks').addEventListener('click', () => saveMarks('PENDING_APPROVAL'));
+
+  // ================= NOTIFICATIONS =================
+  let ownerProfileId = null; // cached so teachers can notify the owner
+
+  async function getOwnerId() {
+    if (ownerProfileId) return ownerProfileId;
+    const { data } = await supabase.from('profiles').select('id').eq('role', 'owner').limit(1).maybeSingle();
+    ownerProfileId = data?.id || null;
+    return ownerProfileId;
+  }
+
+  async function notify(recipientId, message) {
+    if (!recipientId) return;
+    await supabase.from('notifications').insert({ recipient_id: recipientId, message });
+  }
+
+  async function loadNotifications(role) {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+    const { data: notifs } = await supabase.from('notifications').select('id, message, is_read, created_at').eq('recipient_id', user.id).order('created_at', { ascending: false }).limit(20);
+
+    const countEl = document.getElementById(role === 'owner' ? 'owner-bell-count' : 'teacher-bell-count');
+    const dropdown = document.getElementById(role === 'owner' ? 'owner-notif-dropdown' : 'teacher-notif-dropdown');
+    const unread = (notifs || []).filter(n => !n.is_read).length;
+
+    if (unread > 0) { countEl.textContent = unread; countEl.classList.remove('hidden'); }
+    else { countEl.classList.add('hidden'); }
+
+    dropdown.innerHTML = (notifs && notifs.length > 0)
+      ? notifs.map(n => `<div class="p-3 border-b border-border-subtle text-body-sm font-body-sm ${n.is_read ? 'text-on-surface-variant' : 'font-semibold text-on-surface'}">${n.message}<div class="text-xs text-on-surface-variant mt-1">${new Date(n.created_at).toLocaleString('en-IN')}</div></div>`).join('')
+      : '<div class="p-4 text-center text-body-sm font-body-sm text-on-surface-variant">No notifications yet.</div>';
+  }
+
+  function setupBell(role) {
+    const btn = document.getElementById(role === 'owner' ? 'btn-owner-bell' : 'btn-teacher-bell');
+    const dropdown = document.getElementById(role === 'owner' ? 'owner-notif-dropdown' : 'teacher-notif-dropdown');
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('hidden');
+      if (!dropdown.classList.contains('hidden')) {
+        const { data: { user } } = await supabase.auth.getUser();
+        await supabase.from('notifications').update({ is_read: true }).eq('recipient_id', user.id).eq('is_read', false);
+        await loadNotifications(role);
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target) && e.target !== btn) dropdown.classList.add('hidden');
+    });
+  }
+  setupBell('owner');
+  setupBell('teacher');
+
+  let allClasses = [];
+  let allSubjects = [];
+
+  async function loadReferenceData() {
+    if (allClasses.length && allSubjects.length) return;
+    const { data: classes } = await supabase.from('classes').select('id, display_name').order('id');
+    const { data: subjects } = await supabase.from('subjects').select('id, name').order('id');
+    allClasses = classes || [];
+    allSubjects = subjects || [];
+  }
+
+  document.querySelectorAll('.owner-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.owner-tab-btn').forEach(b => { b.classList.remove('border-primary', 'text-primary'); b.classList.add('border-transparent', 'text-on-surface-variant'); });
+      btn.classList.add('border-primary', 'text-primary');
+      btn.classList.remove('border-transparent', 'text-on-surface-variant');
+      document.querySelectorAll('.owner-tab-panel').forEach(p => { p.classList.add('hidden'); p.classList.remove('flex'); });
+      const panel = document.getElementById('owner-tab-' + btn.dataset.tab);
+      panel.classList.remove('hidden');
+      panel.classList.add('flex');
+      if (btn.dataset.tab === 'exams') loadExamCards();
+      if (btn.dataset.tab === 'approvals') loadApprovals();
+      if (btn.dataset.tab === 'publish') loadPublishCards();
+      if (btn.dataset.tab === 'endexam') loadEndExamStatus();
+    });
+  });
+
+  async function loadOwnerPortal() {
+    await loadReferenceData();
+    await loadTeacherCards();
+    await loadNotifications('owner');
+  }
+
+  // ---- Teachers tab ----
+  async function loadTeacherCards() {
+    const { data: teachers } = await supabase.from('profiles').select('id, full_name, role, active').eq('role', 'teacher').order('full_name');
+    const container = document.getElementById('teacher-cards');
+    container.innerHTML = '';
+
+    for (const t of (teachers || [])) {
+      const { data: assignments } = await supabase
+        .from('teacher_assignments')
+        .select('id, classes(display_name), subjects(name)')
+        .eq('teacher_id', t.id);
+
+      const card = document.createElement('div');
+      card.className = 'bg-surface-container-lowest border border-border-subtle rounded-lg p-5';
+      card.innerHTML = `
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="font-headline-md text-headline-md text-primary">${t.full_name}</h3>
+          <label class="flex items-center gap-2 text-body-sm font-body-sm">
+            <input type="checkbox" class="teacher-active-toggle rounded" data-id="${t.id}" ${t.active ? 'checked' : ''}/> Active
+          </label>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-3">
+          ${(assignments || []).map(a => `<span class="px-2 py-1 bg-surface-alt border border-secondary-fixed text-on-secondary-container rounded-sm text-xs flex items-center gap-1">${a.subjects?.name} — ${a.classes?.display_name} <button class="btn-remove-assignment text-error-fail" data-id="${a.id}">×</button></span>`).join('') || '<span class="text-on-surface-variant text-xs">No assignments yet</span>'}
+        </div>
+        <button class="btn-add-assignment font-label-md text-label-md text-primary underline" data-id="${t.id}">+ Add subject/class</button>`;
+      container.appendChild(card);
+    }
+
+    container.querySelectorAll('.btn-remove-assignment').forEach(b => b.addEventListener('click', async () => {
+      if (!confirm('Remove this subject/class assignment?')) return;
+      await supabase.from('teacher_assignments').delete().eq('id', b.dataset.id);
+      await loadTeacherCards();
+    }));
+
+    container.querySelectorAll('.teacher-active-toggle').forEach(cb => {
+      cb.addEventListener('change', async () => {
+        await supabase.from('profiles').update({ active: cb.checked }).eq('id', cb.dataset.id);
+      });
+    });
+    container.querySelectorAll('.btn-add-assignment').forEach(btn => {
+      btn.addEventListener('click', () => openAssignModal(btn.dataset.id));
+    });
+  }
+
+  function openAssignModal(teacherId) {
+    document.getElementById('assign-teacher-id').value = teacherId;
+    document.getElementById('assign-class-select').innerHTML = allClasses.map(c => `<option value="${c.id}">${c.display_name}</option>`).join('');
+    document.getElementById('assign-subject-select').innerHTML = allSubjects.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+    document.getElementById('assign-error').classList.add('hidden');
+    document.getElementById('assign-modal').classList.remove('hidden');
+  }
+  document.getElementById('btn-close-assign').addEventListener('click', () => document.getElementById('assign-modal').classList.add('hidden'));
+
+  document.getElementById('assign-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const teacherId = document.getElementById('assign-teacher-id').value;
+    const classId = document.getElementById('assign-class-select').value;
+    const subjectId = document.getElementById('assign-subject-select').value;
+    const errBox = document.getElementById('assign-error');
+    const { error } = await supabase.from('teacher_assignments').insert({ teacher_id: teacherId, class_id: classId, subject_id: subjectId });
+    if (error) {
+      errBox.textContent = error.message.includes('duplicate') ? 'This teacher already has that subject/class assigned.' : 'Could not save: ' + error.message;
+      errBox.classList.remove('hidden');
+      return;
+    }
+    document.getElementById('assign-modal').classList.add('hidden');
+    await loadTeacherCards();
+  });
+
+  // ---- Add Teacher (client-side signUp via an isolated temp client so it doesn't disturb the owner's session) ----
+  document.getElementById('btn-open-add-teacher').addEventListener('click', () => {
+    document.getElementById('add-teacher-form').reset();
+    document.getElementById('add-teacher-error').classList.add('hidden');
+    document.getElementById('add-teacher-note').classList.add('hidden');
+    document.getElementById('add-teacher-modal').classList.remove('hidden');
+  });
+  document.getElementById('btn-close-add-teacher').addEventListener('click', () => document.getElementById('add-teacher-modal').classList.add('hidden'));
+
+  document.getElementById('add-teacher-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errBox = document.getElementById('add-teacher-error');
+    const noteBox = document.getElementById('add-teacher-note');
+    errBox.classList.add('hidden');
+    noteBox.classList.add('hidden');
+
+    if (await isEverythingLocked()) {
+      showToast('Staff access is temporarily locked. Please try again later.', true);
+      return;
+    }
+
+    const name = document.getElementById('new-teacher-name').value.trim();
+    const email = document.getElementById('new-teacher-email').value.trim();
+    const password = document.getElementById('new-teacher-password').value;
+
+    // isolated client so this signUp never touches the owner's active session
+    const tempClient = createClient(SUPABASE_URL, SUPABASE_KEY, {
+      auth: { persistSession: false, autoRefreshToken: false, storageKey: 'temp-teacher-creation-' + Date.now() }
+    });
+
+    const { data: signUpData, error: signUpError } = await tempClient.auth.signUp({ email, password });
+    if (signUpError) {
+      errBox.textContent = 'Could not create login: ' + signUpError.message;
+      errBox.classList.remove('hidden');
+      return;
+    }
+
+    const newUserId = signUpData.user?.id;
+    if (!newUserId) {
+      errBox.textContent = 'Account creation may require email confirmation — check your Supabase Auth settings (disable "Confirm email" for staff accounts to work immediately).';
+      errBox.classList.remove('hidden');
+      return;
+    }
+
+    const { error: profileError } = await supabase.from('profiles').insert({ id: newUserId, full_name: name, role: 'teacher', email });
+    if (profileError) {
+      errBox.textContent = 'Login created, but profile setup failed: ' + profileError.message;
+      errBox.classList.remove('hidden');
+      return;
+    }
+
+    noteBox.textContent = `Teacher created. Tell them their password. Now add their subject/class assignments from their card below.`;
+    noteBox.classList.remove('hidden');
+    await loadTeacherCards();
+  });
+
+  // ---- Exams tab ----
+  document.getElementById('btn-open-add-exam').addEventListener('click', () => openAddExamModal('owner'));
+  document.getElementById('btn-teacher-open-add-exam').addEventListener('click', () => openAddExamModal('teacher'));
+  document.getElementById('btn-close-add-exam').addEventListener('click', () => document.getElementById('add-exam-modal').classList.add('hidden'));
+
+  let examModalContext = 'owner';
+  function openAddExamModal(context) {
+    examModalContext = context;
+    document.getElementById('add-exam-form').reset();
+    document.getElementById('add-exam-error').classList.add('hidden');
+    const classSelect = document.getElementById('new-exam-class');
+    if (context === 'teacher') {
+      const uniqueClasses = [...new Map(teacherAssignments.map(a => [a.class_id, a.class_name])).entries()];
+      classSelect.innerHTML = uniqueClasses.map(([id, name]) => `<option value="${id}">${name}</option>`).join('');
+    } else {
+      classSelect.innerHTML = allClasses.map(c => `<option value="${c.id}">${c.display_name}</option>`).join('');
+    }
+    renderExamSubjectInputs();
+    classSelect.onchange = renderExamSubjectInputs;
+    document.getElementById('add-exam-modal').classList.remove('hidden');
+  }
+
+  function renderExamSubjectInputs() {
+    const container = document.getElementById('new-exam-subjects');
+    const classId = document.getElementById('new-exam-class').value;
+    const subjectsToShow = examModalContext === 'teacher'
+      ? teacherAssignments.filter(a => String(a.class_id) === String(classId)).map(a => ({ id: a.subject_id, name: a.subject_name }))
+      : allSubjects;
+    container.innerHTML = subjectsToShow.map(s => `
+      <div class="flex items-center gap-2 border border-border-subtle rounded p-2">
+        <label class="flex items-center gap-2 text-body-sm font-body-sm flex-1">
+          <input type="checkbox" class="exam-subject-check rounded" value="${s.id}" checked/> ${s.name}
+        </label>
+        <input type="number" class="exam-subject-max w-20 border border-border-subtle rounded py-1 px-2 text-body-sm" placeholder="Max" value="100"/>
+        <input type="number" class="exam-subject-pass w-20 border border-border-subtle rounded py-1 px-2 text-body-sm" placeholder="Pass" value="35"/>
+      </div>`).join('') || '<p class="text-body-sm text-on-surface-variant">No subjects available.</p>';
+  }
+
+  document.getElementById('add-exam-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errBox = document.getElementById('add-exam-error');
+    const name = document.getElementById('new-exam-name').value.trim();
+    const year = document.getElementById('new-exam-year').value.trim();
+    const classId = document.getElementById('new-exam-class').value;
+
+    const { data: exam, error: examError } = await supabase.from('examinations')
+      .insert({ name, academic_year: year, class_id: classId }).select().single();
+    if (examError) {
+      errBox.textContent = 'Could not create examination: ' + examError.message;
+      errBox.classList.remove('hidden');
+      return;
+    }
+
+    const rows = [...document.querySelectorAll('.exam-subject-check:checked')].map(cb => {
+      const row = cb.closest('div');
+      return {
+        examination_id: exam.id,
+        subject_id: cb.value,
+        max_marks: Number(row.querySelector('.exam-subject-max').value) || 100,
+        pass_marks: Number(row.querySelector('.exam-subject-pass').value) || 35
+      };
+    });
+    if (rows.length > 0) await supabase.from('exam_subjects').insert(rows);
+    await supabase.from('result_publications').insert({ examination_id: exam.id, publish_at: new Date(Date.now() + 7*24*3600*1000).toISOString(), status: 'SCHEDULED' });
+
+    document.getElementById('add-exam-modal').classList.add('hidden');
+    if (examModalContext === 'teacher') { await loadTeacherExamCards(); await loadExamsForMarks(); }
+    else { await loadExamCards(); }
+  });
+
+  function examCardHtml(e, editable) {
+    return `
+      <div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-5" data-exam-id="${e.id}">
+        <div class="flex justify-between items-start">
+          <h3 class="font-headline-md text-headline-md text-primary mb-1">${e.name}</h3>
+          ${editable ? `<button class="btn-delete-exam text-error-fail text-xs hover:underline" data-id="${e.id}">Delete</button>` : ''}
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">${e.classes?.display_name} · ${e.academic_year}</p>
+      </div>`;
+  }
+
+  async function loadTeacherExamCards() {
+    const classIds = [...new Set(teacherAssignments.map(a => a.class_id))];
+    const container = document.getElementById('teacher-exam-cards');
+    if (classIds.length === 0) { container.innerHTML = ''; return; }
+    const { data: exams } = await supabase.from('examinations').select('id, name, academic_year, classes(display_name)').in('class_id', classIds).order('created_at', { ascending: false });
+    container.innerHTML = (exams || []).map(e => examCardHtml(e, true)).join('') || '<p class="font-body-sm text-body-sm text-on-surface-variant">No examinations yet for your classes.</p>';
+    container.querySelectorAll('.btn-delete-exam').forEach(b => b.addEventListener('click', async () => {
+      if (!confirm('Delete this examination? This removes all its marks and publication schedule too.')) return;
+      await supabase.from('examinations').delete().eq('id', b.dataset.id);
+      await loadTeacherExamCards();
+      await loadExamsForMarks();
+    }));
+  }
+
+  async function loadExamCards() {
+    const { data: exams } = await supabase.from('examinations').select('id, name, academic_year, classes(display_name)').order('created_at', { ascending: false });
+    const container = document.getElementById('exam-cards');
+    container.innerHTML = (exams || []).map(e => examCardHtml(e, true)).join('') || '<p class="font-body-sm text-body-sm text-on-surface-variant">No examinations created yet.</p>';
+    container.querySelectorAll('.btn-delete-exam').forEach(b => b.addEventListener('click', async () => {
+      if (!confirm('Delete this examination? This removes all its marks and publication schedule too.')) return;
+      await supabase.from('examinations').delete().eq('id', b.dataset.id);
+      await loadExamCards();
+    }));
+  }
+
+  // ---- Approvals tab ----
+  async function loadApprovals() {
+    const { data: pending } = await supabase
+      .from('marks')
+      .select('id, obtained_marks, entered_by, students(full_name, classes(display_name)), subjects(name), examinations(name)')
+      .eq('status', 'PENDING_APPROVAL');
+
+    const tbody = document.getElementById('approvals-body');
+    const emptyMsg = document.getElementById('approvals-empty');
+    tbody.innerHTML = '';
+
+    if (!pending || pending.length === 0) { emptyMsg.classList.remove('hidden'); return; }
+    emptyMsg.classList.add('hidden');
+
+    pending.forEach(m => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="py-2 px-4">${m.students?.full_name || ''}</td>
+        <td class="py-2 px-4">${m.students?.classes?.display_name || ''}</td>
+        <td class="py-2 px-4">${m.subjects?.name || ''}</td>
+        <td class="py-2 px-4">${m.examinations?.name || ''}</td>
+        <td class="py-2 px-4 text-center font-bold">${m.obtained_marks}</td>
+        <td class="py-2 px-4 text-right">
+          <button class="btn-approve px-3 py-1.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md mr-2" data-id="${m.id}">Approve</button>
+          <button class="btn-reject px-3 py-1.5 rounded bg-error-container text-error-fail font-label-md text-label-md" data-id="${m.id}">Reject</button>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+
+    tbody.querySelectorAll('.btn-approve').forEach(b => b.addEventListener('click', async () => {
+      const row = pending.find(m => String(m.id) === b.dataset.id);
+      await supabase.from('marks').update({ status: 'APPROVED', reviewed_by: (await supabase.auth.getUser()).data.user.id }).eq('id', b.dataset.id);
+      if (row) await notify(row.entered_by, `Marks approved: ${row.subjects?.name} — ${row.students?.full_name} (${row.examinations?.name})`);
+      showToast('Marks approved.');
+      await loadApprovals();
+    }));
+    tbody.querySelectorAll('.btn-reject').forEach(b => b.addEventListener('click', async () => {
+      const reason = prompt('Reason for rejection (shown to the teacher):') || 'No reason given';
+      const row = pending.find(m => String(m.id) === b.dataset.id);
+      await supabase.from('marks').update({ status: 'REJECTED', rejection_reason: reason, reviewed_by: (await supabase.auth.getUser()).data.user.id }).eq('id', b.dataset.id);
+      if (row) await notify(row.entered_by, `Marks rejected: ${row.subjects?.name} — ${row.students?.full_name} (${row.examinations?.name}). Reason: ${reason}`);
+      showToast('Marks rejected.', true);
+      await loadApprovals();
+    }));
+  }
+
+  // ---- Publish tab ----
+  async function loadPublishCards() {
+    const { data: pubs } = await supabase
+      .from('result_publications')
+      .select('id, examination_id, publish_at, status, examinations(name, academic_year, classes(display_name))')
+      .order('publish_at', { ascending: false });
+
+    // check how many APPROVED marks exist for each examination, so we can warn/block
+    // publishing exams that have no approved marks yet.
+    const examIds = [...new Set((pubs || []).map(p => p.examination_id))];
+    const approvedCounts = {};
+    if (examIds.length > 0) {
+      const { data: markRows } = await supabase
+        .from('marks')
+        .select('examination_id, status')
+        .in('examination_id', examIds);
+      (markRows || []).forEach(m => {
+        if (!approvedCounts[m.examination_id]) approvedCounts[m.examination_id] = { approved: 0, other: 0 };
+        if (m.status === 'APPROVED') approvedCounts[m.examination_id].approved++;
+        else approvedCounts[m.examination_id].other++;
+      });
+    }
+
+    const container = document.getElementById('publish-cards');
+    container.innerHTML = (pubs || []).map(p => {
+      const counts = approvedCounts[p.examination_id] || { approved: 0, other: 0 };
+      const hasNoApproved = counts.approved === 0;
+      const warningBanner = hasNoApproved
+        ? `<div class="mb-3 px-3 py-2 rounded bg-error-container text-error-fail font-body-sm text-body-sm flex items-center gap-2">
+             <span class="material-symbols-outlined text-[18px]">warning</span>
+             No approved marks yet${counts.other > 0 ? ` (${counts.other} pending/rejected)` : ''} — students will see an empty result.
+           </div>`
+        : `<p class="font-body-sm text-body-sm text-success-pass mb-3">${counts.approved} approved mark${counts.approved === 1 ? '' : 's'} entered.</p>`;
+      return `
+      <div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-5">
+        <h3 class="font-headline-md text-headline-md text-primary mb-1">${p.examinations?.name || ''}</h3>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mb-2">${p.examinations?.classes?.display_name || ''} · ${p.examinations?.academic_year || ''}</p>
+        <p class="font-body-sm text-body-sm mb-3">Scheduled: ${new Date(p.publish_at).toLocaleString('en-IN')}</p>
+        <span class="inline-block px-2 py-1 rounded text-xs font-bold uppercase mb-3 ${p.status === 'PUBLISHED' ? 'bg-secondary-fixed text-on-secondary-fixed' : p.status === 'UNPUBLISHED' ? 'bg-error-container text-error-fail' : 'bg-warning-pending/20 text-warning-pending'}">${p.status}</span>
+        ${warningBanner}
+        <div class="flex gap-2 flex-wrap">
+          <button class="btn-reschedule px-3 py-1.5 rounded border border-border-subtle font-label-md text-label-md" data-id="${p.examination_id}">Reschedule</button>
+          <button class="btn-publish-now px-3 py-1.5 rounded font-label-md text-label-md ${hasNoApproved ? 'bg-surface-container-highest text-on-surface-variant cursor-not-allowed' : 'bg-primary-container text-on-primary'}" data-id="${p.id}" ${hasNoApproved ? 'disabled' : ''}>Publish Now</button>
+          <button class="btn-unpublish px-3 py-1.5 rounded bg-error-container text-error-fail font-label-md text-label-md" data-id="${p.id}">Unpublish</button>
+        </div>
+      </div>`;
+    }).join('') || '<p class="font-body-sm text-body-sm text-on-surface-variant">No examinations yet.</p>';
+
+    container.querySelectorAll('.btn-reschedule').forEach(b => b.addEventListener('click', () => {
+      document.getElementById('schedule-exam-id').value = b.dataset.id;
+      document.getElementById('schedule-publish-modal').classList.remove('hidden');
+    }));
+    container.querySelectorAll('.btn-publish-now').forEach(b => b.addEventListener('click', async () => {
+      const pub = pubs.find(p => String(p.id) === b.dataset.id);
+      const counts = pub ? (approvedCounts[pub.examination_id] || { approved: 0, other: 0 }) : { approved: 0, other: 0 };
+      if (counts.approved === 0) {
+        showToast('Cannot publish: no approved marks for this exam yet.', true);
+        return;
+      }
+      await supabase.from('result_publications').update({ status: 'PUBLISHED', publish_at: 'now' }).eq('id', b.dataset.id);
+      if (pub) {
+        const { data: assignedTeachers } = await supabase.from('teacher_assignments').select('teacher_id').eq('class_id', (await supabase.from('examinations').select('class_id').eq('id', pub.examination_id).single()).data?.class_id);
+        const uniqueTeacherIds = [...new Set((assignedTeachers || []).map(a => a.teacher_id))];
+        for (const tid of uniqueTeacherIds) await notify(tid, `Result published: ${pub.examinations?.name}`);
+      }
+      showToast('Result published successfully.');
+      await loadPublishCards();
+    }));
+    container.querySelectorAll('.btn-unpublish').forEach(b => b.addEventListener('click', async () => {
+      await supabase.from('result_publications').update({ status: 'UNPUBLISHED' }).eq('id', b.dataset.id);
+      await loadPublishCards();
+    }));
+  }
+  document.getElementById('btn-close-schedule').addEventListener('click', () => document.getElementById('schedule-publish-modal').classList.add('hidden'));
+  document.getElementById('schedule-publish-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const examId = document.getElementById('schedule-exam-id').value;
+    const when = document.getElementById('schedule-datetime').value;
+    await supabase.from('result_publications').update({ publish_at: new Date(when).toISOString(), status: 'SCHEDULED' }).eq('examination_id', examId);
+    document.getElementById('schedule-publish-modal').classList.add('hidden');
+    await loadPublishCards();
+  });
+
+  // ---- END EXAM RESULT tab ----
+  async function loadEndExamStatus() {
+    const { data: settings } = await supabase.from('system_settings').select('end_exam_result_active').eq('id', 1).single();
+    const active = settings?.end_exam_result_active || false;
+    const icon = document.getElementById('endexam-icon');
+    const status = document.getElementById('endexam-status');
+    const btn = document.getElementById('btn-toggle-endexam');
+    if (active) {
+      icon.textContent = 'lock'; icon.className = 'material-symbols-outlined text-[48px] mb-4 block text-error-fail';
+      status.textContent = 'CURRENTLY ACTIVE — staff login disabled'; status.className = 'font-label-md text-label-md mb-6 uppercase text-error-fail';
+      btn.textContent = 'DEACTIVATE'; btn.className = 'px-6 py-3 rounded-lg font-label-md text-label-md active:scale-95 bg-surface-container-highest text-on-surface border border-border-subtle';
+    } else {
+      icon.textContent = 'lock_open'; icon.className = 'material-symbols-outlined text-[48px] mb-4 block text-success-pass';
+      status.textContent = 'CURRENTLY INACTIVE — normal access'; status.className = 'font-label-md text-label-md mb-6 uppercase text-success-pass';
+      btn.textContent = 'ACTIVATE'; btn.className = 'px-6 py-3 rounded-lg font-label-md text-label-md active:scale-95 bg-error-fail text-white';
+    }
+    btn.onclick = async () => {
+      const confirmMsg = active ? 'Deactivate END EXAM RESULT and restore normal staff access?' : 'Activate END EXAM RESULT? This disables staff login for everyone except you.';
+      if (!confirm(confirmMsg)) return;
+      const { data: { user } } = await supabase.auth.getUser();
+      await supabase.from('system_settings').update({ end_exam_result_active: !active, updated_by: user.id }).eq('id', 1);
+      await loadEndExamStatus();
+    };
+
+    await loadHideStaffLoginStatus();
+  }
+
+  // ---- HIDE STAFF LOGIN (timed) ----
+  // Note: if a lock is currently active, the owner can never actually be
+  // looking at this panel (routeAfterLogin blocks entry, and the watchdog
+  // kicks out anyone already inside). So this always renders the "ready
+  // to set a new lock" state — there is nothing to show for an active
+  // lock here, and no cancel action, by design.
+  async function loadHideStaffLoginStatus() {
+    const icon = document.getElementById('hidelogin-icon');
+    const status = document.getElementById('hidelogin-status');
+    icon.textContent = 'visibility'; icon.className = 'material-symbols-outlined text-[48px] mb-4 block text-success-pass';
+    status.textContent = 'CURRENTLY VISIBLE TO STUDENTS'; status.className = 'font-label-md text-label-md mb-6 uppercase text-success-pass';
+
+    document.querySelectorAll('.hidelogin-duration-btn').forEach(b => {
+      b.onclick = async () => {
+        const minutes = Number(b.dataset.minutes);
+        await setHideStaffLoginFor(minutes);
+      };
+    });
+
+    document.getElementById('btn-hidelogin-custom').onclick = async () => {
+      const minutes = Number(document.getElementById('hidelogin-custom-minutes').value);
+      if (!minutes || minutes <= 0) {
+        showToast('Enter a valid number of minutes.', true);
+        return;
+      }
+      await setHideStaffLoginFor(minutes);
+    };
+  }
+
+  async function setHideStaffLoginFor(minutes) {
+    const untilDate = new Date(Date.now() + minutes * 60 * 1000);
+    if (!confirm(`Lock staff login and the Teacher/Owner panels for ${minutes} minutes, until ${untilDate.toLocaleString('en-IN')}? Nobody, including you, can undo this early — you'll be signed out shortly after confirming.`)) return;
+    const { data: { user } } = await supabase.auth.getUser();
+    await supabase.from('system_settings').update({ hide_staff_login_until: untilDate.toISOString(), updated_by: user.id }).eq('id', 1);
+    showToast('Staff access locked. You will be signed out shortly.');
+    // no need to call loadHideStaffLoginStatus() — the watchdog will sign
+    // this owner out within ~15s once the lock takes effect.
+  }
+
+
+  // Watchdog: once inside the teacher or owner dashboard, keep checking
+  // in the background. If the owner turns on "Hide Staff Login" while
+  // someone is already sitting inside a panel (Add Student, Add Teacher,
+  // etc. still open), this signs them out and kicks them back to the
+  // search page within the check interval — closing the gap where an
+  // already-open session could keep working after the lock starts.
+  let lockWatchdogInterval = null;
+  function startLockWatchdog() {
+    if (lockWatchdogInterval) return; // already running
+    lockWatchdogInterval = setInterval(async () => {
+      if (await isEverythingLocked()) {
+        clearInterval(lockWatchdogInterval);
+        lockWatchdogInterval = null;
+        await supabase.auth.signOut();
+        resetTeacherState();
+        unmountStaffPortal();
+        showToast('Staff access has been locked by the owner.', true);
+        showView('view-search');
+      }
+    }, 15 * 1000);
+  }
+
+  // ---- Genuine staff-portal isolation ----
+  // The Teacher and Owner dashboard <section> elements are detached from
+  // the document right here, after every button/form inside them has
+  // already had its event listeners attached above (detaching a node does
+  // not remove listeners bound to it or its children — it just takes it
+  // out of the page). From this point on, an unauthenticated visitor's
+  // DOM contains no staff markup at all — not hidden with CSS, genuinely
+  // absent — until a real successful Supabase login calls
+  // mountStaffPortal(), which re-inserts the correct one into
+  // #staff-portal-mount. unmountStaffPortal() reverses this on logout,
+  // on a lock, or if the watchdog signs someone out.
+  let teacherDashboardNode = document.getElementById('view-teacher-dashboard');
+  let ownerDashboardNode = document.getElementById('view-owner-dashboard');
+  if (teacherDashboardNode) teacherDashboardNode.remove();
+  if (ownerDashboardNode) ownerDashboardNode.remove();
+
+  function mountStaffPortal(role) {
+    const mount = document.getElementById('staff-portal-mount');
+    if (teacherDashboardNode && teacherDashboardNode.parentNode) teacherDashboardNode.remove();
+    if (ownerDashboardNode && ownerDashboardNode.parentNode) ownerDashboardNode.remove();
+    const node = role === 'owner' ? ownerDashboardNode : teacherDashboardNode;
+    if (node) mount.appendChild(node);
+  }
+
+  function unmountStaffPortal() {
+    if (teacherDashboardNode && teacherDashboardNode.parentNode) teacherDashboardNode.remove();
+    if (ownerDashboardNode && ownerDashboardNode.parentNode) ownerDashboardNode.remove();
+  }
+
+  // NOTE: we deliberately do NOT auto-route to the teacher/owner dashboard
+  // on page load, even if a staff session is still saved in this browser.
+  // The public link must always land on the student search page first
+  // (see the "Staff Login" button handler above, which routes staff to
+  // their dashboard only when they explicitly click it).
+</script>
+</body>
+</html>
+
+
+
+  }
+
+</script>
+</body>
+</html>
